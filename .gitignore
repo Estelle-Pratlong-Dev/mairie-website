@@ -1,0 +1,11 @@
+# Configuration locale de l'aperçu (outil de développement, pas le site)
+.claude/
+
+# Artefacts d'enregistrement de page web
+img/mairie.htm
+*_files/
+
+# Système
+Thumbs.db
+desktop.ini
+.DS_Store
