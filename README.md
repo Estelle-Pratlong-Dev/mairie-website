@@ -1,60 +1,72 @@
-# Site de la Mairie de Gagnières
+Mairie de Gagnières — Proposition de refonte du site municipal
 
-Refonte moderne du site https://mairie-gagnieres.fr/ — même contenu, nouvelle présentation.
+⚠️ Prototype en cours — projet non officiel et non encore validé par la commune de Gagnières.
 
-## Voir le site en local
+Ce dépôt présente une proposition de modernisation du site internet de la mairie de Gagnières.
+Il s'agit d'une maquette de travail et non du site officiel actuellement publié par la commune.
 
-Le dossier est dans Laragon : démarrez Laragon puis ouvrez **http://mairie-website.test**
-(ou ouvrez simplement `index.html` dans un navigateur — le site est 100 % statique).
+Le projet
 
-## Structure
+Le projet est né du besoin de moderniser le site municipal existant et de proposer une interface plus actuelle, claire et adaptée aux différents supports.
 
-| Fichier | Page |
-|---|---|
-| `index.html` | Accueil (démarches, chiffres clés, actualités) |
-| `mot-du-maire.html` | Le mot du Maire |
-| `conseil-municipal.html` | Le Conseil municipal |
-| `services-municipaux.html` | Les équipes municipales |
-| `services.html` | Vie pratique (les 16 services : école, santé, déchets…) |
-| `professionnels.html` | Annuaire des commerçants et artisans |
-| `associations.html` | Les associations |
-| `contact.html` | Contact, horaires, plan d'accès |
-| `mentions-legales.html` | Mentions légales et RGPD |
-| `assets/css/style.css` | Toute la mise en forme (couleurs, polices…) |
-| `assets/js/main.js` | Menu mobile et formulaire de contact |
+L'objectif est de conserver un site volontairement simple et léger, tout en améliorant l'organisation des contenus, la navigation et leur consultation sur mobile et tablette.
 
-## Modifier le contenu
+Une attention particulière est également portée aux bonnes pratiques d'accessibilité, importantes dans le contexte d'un site destiné à une collectivité.
 
-Tout est en HTML simple : ouvrez le fichier de la page concernée et modifiez le texte.
-Les couleurs se changent en haut de `assets/css/style.css` (variables `--slate-*` pour
-l'anthracite/gris, `--blue-*` pour le bleu d'accent).
+Fonctionnalités
+Site statique multipage
+Navigation responsive
+Présentation des informations et services municipaux
+Organisation des contenus par thématiques
+Présentation des commerces et services locaux
+Actualités et informations pratiques
+Système d'annonces événementielles à expiration automatique en JavaScript
+Adaptation mobile et tablette
+Choix techniques
 
-## Flash info (annonces à expiration automatique)
+Le site est volontairement développé sans framework front-end.
 
-Les annonces de la page d'accueil se gèrent dans **`assets/js/annonces.js`** :
-chaque annonce a un titre, un texte, une affiche (facultative) et une **date au format
-AAAA-MM-JJ** qui est son *dernier jour d'affichage*. Le lendemain de cette date,
-l'annonce disparaît toute seule du site ; quand il n'y a plus aucune annonce en cours,
-le bloc Flash info disparaît entièrement. Le mode d'emploi détaillé est en commentaire
-en haut du fichier.
+Le choix de HTML, CSS et JavaScript vanilla permet de conserver une architecture légère et adaptée à un site principalement informatif, sans introduire de dépendances inutiles.
 
-Les affiches des événements se déposent dans le dossier `img/event/`
-(noms de fichiers sans espaces ni accents).
+Le système d'annonces utilise JavaScript pour gérer automatiquement leur affichage et leur expiration en fonction des dates définies.
 
-## Photos
+Stack technique
+HTML5
+CSS3
+JavaScript vanilla
+Git
+Accessibilité
 
-Les photos du village sont dans `img/`. La photo du bandeau d'accueil est
-`img/ville-de-gagnieres.jpg` (référencée dans `assets/css/style.css`, section `.hero`).
-La galerie « Le village en images » se modifie directement dans `index.html`.
+La conception du projet tient compte des bonnes pratiques d'accessibilité web et vise à faciliter la consultation du site par le plus grand nombre.
 
-## À faire avant la mise en ligne
+Le projet n'a cependant pas encore fait l'objet d'un audit de conformité et ne doit pas être considéré comme certifié conforme au RGAA.
 
-1. **Mot du Maire** : le texte actuel est repris de l'ancien site et signé Olivier Martin ;
-   à faire actualiser/signer par le maire actuel (Bernard Durand).
-2. **Formulaire de contact** : il ouvre pour l'instant le logiciel de messagerie du visiteur
-   (`mailto:`). Pour un vrai envoi serveur, utiliser le service de formulaire de l'hébergeur
-   choisi ou un petit script PHP.
-3. **Mentions légales** : compléter le nom de l'hébergeur.
-4. **Photos** : remplacer les illustrations par de vraies photos du village si souhaité
-   (notamment dans le bandeau d'accueil).
-5. **Actualités** : la seule actualité reprise date de 2020 — à remplacer par des actualités récentes.
+Développement assisté par IA
+
+La première version de cette proposition a été développée avec l'assistance d'outils d'intelligence artificielle.
+
+L'IA a été utilisée comme outil de prototypage et d'aide au développement. La structure, les contenus et les fonctionnalités ont vocation à évoluer en fonction des besoins identifiés et des futurs échanges avec la commune.
+
+Statut du projet
+
+🚧 Projet en cours
+
+Cette proposition n'a pas encore été présentée et validée définitivement par la commune.
+
+Certains contenus sont provisoires ou repris de l'ancien site afin de disposer de données réalistes pendant la conception. Ils devront être vérifiés et actualisés avant toute éventuelle mise en production.
+
+Démonstration
+
+Une capture du projet est disponible depuis mon portfolio.
+
+La version complète n'est volontairement pas présentée comme site officiel tant que la proposition n'a pas été validée par la commune.
+
+À propos
+
+Ce projet fait partie de mon portfolio de développement web et illustre notamment mon travail autour :
+
+de la conception d'un site institutionnel ;
+de l'organisation de contenus ;
+du responsive design ;
+de l'accessibilité web ;
+du développement JavaScript sans framework.
