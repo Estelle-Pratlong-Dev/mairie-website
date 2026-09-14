@@ -1,0 +1,30 @@
+# ============================================================
+#  Configuration serveur Apache — Mairie de Gagnières
+# ============================================================
+
+# Encodage par défaut des pages
+AddDefaultCharset UTF-8
+
+# Page servie par défaut pour un dossier
+DirectoryIndex index.php
+
+# Page d'erreur 404 personnalisée
+ErrorDocument 404 /404.php
+
+# Interdire l'accès direct au dossier des gabarits (header, layout…)
+RedirectMatch 403 ^/partials/
+
+# Compression des fichiers texte (gain de vitesse)
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript image/svg+xml application/xml
+</IfModule>
+
+# Mise en cache navigateur des fichiers statiques
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css            "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType image/jpeg          "access plus 6 months"
+  ExpiresByType image/png           "access plus 6 months"
+  ExpiresByType image/svg+xml       "access plus 6 months"
+</IfModule>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Blason de Gagnières">
+  <defs>
+    <clipPath id="ecu">
+      <path d="M16 2 L28 6 V15 C28 23 22 28 16 30 C10 28 4 23 4 15 V6 Z"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#ecu)">
+    <rect width="32" height="32" fill="#17805a"/>
+    <rect y="12.3" width="32" height="7.4" fill="#ffffff"/>
+    <path d="M8 16l2.3-3.3 2.3 3.3-2.3 3.3z" fill="#245ec0"/>
+    <path d="M14.6 16l2.3-3.3 2.3 3.3-2.3 3.3z" fill="#245ec0"/>
+    <path d="M21.2 16l2.3-3.3 2.3 3.3-2.3 3.3z" fill="#245ec0"/>
+  </g>
+  <path d="M16 2 L28 6 V15 C28 23 22 28 16 30 C10 28 4 23 4 15 V6 Z" fill="none" stroke="#c9a13a" stroke-width="1.6"/>
+</svg>
