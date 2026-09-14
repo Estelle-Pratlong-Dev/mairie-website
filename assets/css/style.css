@@ -144,17 +144,13 @@ a:hover { color: var(--slate-900); }
   text-decoration: none;
 }
 
-.brand-mark {
-  width: 46px;
-  height: 46px;
+/* Logo (blason de la commune) dans l'en-tête et le pied de page */
+.brand-logo {
+  height: 48px;
+  width: auto;
   flex: none;
-  border-radius: 12px;
-  background: linear-gradient(135deg, var(--blue-500), var(--blue-600));
-  display: grid;
-  place-items: center;
-  color: #fff;
+  display: block;
 }
-.brand-mark svg { width: 26px; height: 26px; }
 
 .brand-text { line-height: 1.15; }
 .brand-text .brand-name {
@@ -256,7 +252,7 @@ a:hover { color: var(--slate-900); }
   /* Voile sombre uniquement derrière le texte (à gauche), paysage dégagé à droite */
   background:
     linear-gradient(100deg, rgba(20, 24, 29, 0.78) 0%, rgba(20, 24, 29, 0.55) 38%, rgba(20, 24, 29, 0.18) 70%, rgba(20, 24, 29, 0.05) 100%),
-    url("../../img/ville-de-gagnieres.jpg") center / cover no-repeat;
+    url("../../img/village/ville-de-gagnieres.jpg") center / cover no-repeat;
   color: #fff;
   overflow: hidden;
 }
@@ -623,6 +619,60 @@ a.card:hover .card-link { color: var(--slate-900); }
 .info-list a { color: var(--blue-600); text-decoration: none; font-weight: 500; }
 .info-list a:hover { text-decoration: underline; }
 
+/* Annuaire des services médicaux — grille de petites fiches (tuiles) */
+.med-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);   /* 2 lignes de 3 sur ordinateur */
+  gap: 1rem;
+  margin-top: 1.4rem;
+}
+@media (max-width: 900px) { .med-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .med-grid { grid-template-columns: 1fr; } }
+.med-tile {
+  background: var(--slate-050);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 1.1rem 1.2rem;
+}
+.med-tile h4 {
+  font-family: var(--font-title);
+  font-size: 0.98rem;
+  color: var(--slate-900);
+  margin: 0 0 0.8rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.45rem;
+}
+/* Badge de localité (à côté d'un titre ou d'un nom) */
+.med-loc {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--blue-600);
+}
+.med-who .med-loc { margin-left: 0.35rem; }
+/* Un praticien / une structure */
+.med-entry + .med-entry {
+  margin-top: 0.65rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--line);
+}
+.med-who { font-weight: 600; color: var(--ink); margin: 0; font-size: 0.94rem; }
+.med-who + .med-who { margin-top: 0.15rem; }
+.med-line {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+  margin: 0.35rem 0 0;
+  font-size: 0.86rem;
+  color: var(--ink-soft);
+}
+.med-line svg { width: 15px; height: 15px; flex: none; margin-top: 0.12rem; color: var(--slate-600); }
+.med-line a { color: var(--blue-600); text-decoration: none; font-weight: 500; }
+.med-line a:hover { text-decoration: underline; }
+
 /* ------------------------------ Élus / équipe ----------------------------- */
 
 .person {
@@ -805,7 +855,7 @@ textarea { min-height: 160px; resize: vertical; }
 
 .footer-main {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  grid-template-columns: 1.3fr 1.5fr 1fr 1fr;
   gap: 2.5rem;
   padding-block: clamp(2.5rem, 6vw, 4rem) 2rem;
 }
@@ -823,12 +873,13 @@ textarea { min-height: 160px; resize: vertical; }
 .site-footer a:hover { color: #fff; text-decoration: underline; }
 
 .footer-brand { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 1rem; }
-.footer-brand .brand-mark { background: rgba(255, 255, 255, 0.12); }
+.footer-brand .brand-logo { height: 42px; }
 .footer-brand .brand-name { font-family: var(--font-title); font-weight: 700; color: #fff; font-size: 1.05rem; }
 
 .footer-hours { display: grid; gap: 0.3rem; font-variant-numeric: tabular-nums; }
-.footer-hours div { display: flex; justify-content: space-between; gap: 1rem; }
+.footer-hours div { display: flex; justify-content: space-between; gap: 1.2rem; }
 .footer-hours dt { color: #ffffff; font-weight: 500; }
+.footer-hours dd { margin: 0; white-space: nowrap; }
 
 .footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.12);

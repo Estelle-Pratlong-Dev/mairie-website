@@ -1,72 +1,83 @@
-Mairie de Gagnières — Proposition de refonte du site municipal
+# Site de la Mairie de Gagnières
 
-⚠️ Prototype en cours — projet non officiel et non encore validé par la commune de Gagnières.
+Refonte moderne du site https://mairie-gagnieres.fr/ — mêmes contenus, présentation actualisée.
+Site en **PHP** (pages assemblées à partir d'un gabarit unique), hébergeable sur tout
+hébergement mutualisé classique (OVH, Ionos, o2switch…).
 
-Ce dépôt présente une proposition de modernisation du site internet de la mairie de Gagnières.
-Il s'agit d'une maquette de travail et non du site officiel actuellement publié par la commune.
+## Voir le site en local
 
-Le projet
+Démarrez Laragon puis ouvrez **http://mairie-website.test**.
+(PHP est nécessaire — un simple double-clic sur les fichiers ne suffit pas.)
 
-Le projet est né du besoin de moderniser le site municipal existant et de proposer une interface plus actuelle, claire et adaptée aux différents supports.
+## Architecture (important)
 
-L'objectif est de conserver un site volontairement simple et léger, tout en améliorant l'organisation des contenus, la navigation et leur consultation sur mobile et tablette.
+Le site utilise le principe du **gabarit unique**, comme le `base.html.twig` de Symfony :
 
-Une attention particulière est également portée aux bonnes pratiques d'accessibilité, importantes dans le contexte d'un site destiné à une collectivité.
+- **`partials/layout.php`** contient tout ce qui ne change pas d'une page à l'autre :
+  `<head>` (SEO), barre de contact, menu, pied de page, scripts. **Toutes les balises
+  s'ouvrent et se ferment dans ce seul fichier.**
+- **Chaque page** (`index.php`, `services.php`, …) ne contient que **son propre contenu**.
+  Elle le prépare puis appelle le gabarit :
 
-Fonctionnalités
-Site statique multipage
-Navigation responsive
-Présentation des informations et services municipaux
-Organisation des contenus par thématiques
-Présentation des commerces et services locaux
-Actualités et informations pratiques
-Système d'annonces événementielles à expiration automatique en JavaScript
-Adaptation mobile et tablette
-Choix techniques
+  ```php
+  <?php
+  $title = '…'; $description = '…'; $active = '…'; $canonical = 'services.php';
+  ob_start();               // on capture le contenu de la page
+  ?>
+     … sections de la page …
+  <?php
+  $content = ob_get_clean(); // le contenu part dans $content
+  include 'partials/layout.php';
+  ```
 
-Le site est volontairement développé sans framework front-end.
+Pour modifier le menu, le pied de page ou le `<head>` : **un seul endroit**, `partials/layout.php`.
 
-Le choix de HTML, CSS et JavaScript vanilla permet de conserver une architecture légère et adaptée à un site principalement informatif, sans introduire de dépendances inutiles.
+Les **icônes** (téléphone, adresse…) sont centralisées dans `partials/icons.php` et s'utilisent
+par leur nom : `<?= icon('phone') ?>`. Ainsi le tracé de chaque icône n'existe qu'une seule fois.
 
-Le système d'annonces utilise JavaScript pour gérer automatiquement leur affichage et leur expiration en fonction des dates définies.
+## Les pages
 
-Stack technique
-HTML5
-CSS3
-JavaScript vanilla
-Git
-Accessibilité
+| Fichier | Page |
+|---|---|
+| `index.php` | Accueil (Flash info, démarches, actualités, galerie) |
+| `mot-du-maire.php` | Le mot du Maire |
+| `conseil-municipal.php` | Le Conseil municipal |
+| `services-municipaux.php` | Les équipes municipales |
+| `services.php` | Vie pratique (école, santé, déchets, transports…) |
+| `professionnels.php` | Annuaire des commerçants et artisans |
+| `associations.php` | Les associations |
+| `contact.php` | Contact, horaires, plan d'accès |
+| `mentions-legales.php` | Mentions légales et RGPD |
+| `404.php` | Page d'erreur « introuvable » |
+| `partials/layout.php` | Gabarit commun (menu, pied de page, SEO) |
+| `partials/icons.php` | Catalogue des icônes SVG — appelées par `icon('nom')` |
+| `config.php` | Réglages du site (adresse/domaine) — **à éditer à la mise en ligne** |
+| `assets/css/style.css` | Mise en forme (couleurs en haut du fichier) |
+| `assets/js/main.js` | Menu mobile, formulaire, Flash info |
+| `assets/js/annonces.js` | **Contenu des annonces Flash info** (voir ci-dessous) |
 
-La conception du projet tient compte des bonnes pratiques d'accessibilité web et vise à faciliter la consultation du site par le plus grand nombre.
+## Flash info (annonces à expiration automatique)
 
-Le projet n'a cependant pas encore fait l'objet d'un audit de conformité et ne doit pas être considéré comme certifié conforme au RGAA.
+Les annonces de la page d'accueil se gèrent dans **`assets/js/annonces.js`** : chaque annonce
+a une **date de fin** (format AAAA-MM-JJ). Le lendemain, elle disparaît toute seule ; quand il
+n'y a plus d'annonce, le bloc entier disparaît. Le mode d'emploi est en tête du fichier.
+Les affiches se déposent dans `img/event/`.
 
-Développement assisté par IA
+## Référencement (SEO) — déjà en place
 
-La première version de cette proposition a été développée avec l'assistance d'outils d'intelligence artificielle.
+- Titre + description uniques par page, URL canonique, Open Graph (partage réseaux sociaux)
+- Données structurées JSON-LD (fiche mairie pour Google), favicon, `theme-color`
+- `robots.txt`, `sitemap.php` (généré depuis `config.php`), page `404.php`, `.htaccess` (compression, cache, UTF-8)
 
-L'IA a été utilisée comme outil de prototypage et d'aide au développement. La structure, les contenus et les fonctionnalités ont vocation à évoluer en fonction des besoins identifiés et des futurs échanges avec la commune.
+> **À faire le jour de la mise en ligne :** l'adresse du site est centralisée dans **`config.php`**
+> (`$baseUrl`) — un seul endroit à modifier pour tout le PHP (canonical, Open Graph, JSON-LD,
+> `sitemap.php`). Seul `robots.txt` (fichier statique) contient encore le domaine en clair,
+> à mettre à jour aussi.
 
-Statut du projet
+## À faire avant la mise en ligne
 
-🚧 Projet en cours
-
-Cette proposition n'a pas encore été présentée et validée définitivement par la commune.
-
-Certains contenus sont provisoires ou repris de l'ancien site afin de disposer de données réalistes pendant la conception. Ils devront être vérifiés et actualisés avant toute éventuelle mise en production.
-
-Démonstration
-
-Une capture du projet est disponible depuis mon portfolio.
-
-La version complète n'est volontairement pas présentée comme site officiel tant que la proposition n'a pas été validée par la commune.
-
-À propos
-
-Ce projet fait partie de mon portfolio de développement web et illustre notamment mon travail autour :
-
-de la conception d'un site institutionnel ;
-de l'organisation de contenus ;
-du responsive design ;
-de l'accessibilité web ;
-du développement JavaScript sans framework.
+1. **Mot du Maire** : texte encore signé Olivier Martin — à faire actualiser/signer par le maire actuel.
+2. **Formulaire de contact** : ouvre le logiciel de messagerie (`mailto:`). Pour un envoi
+   serveur, prévoir un petit script PHP côté hébergeur.
+3. **Mentions légales** : compléter le nom de l'hébergeur.
+4. **Domaine** : mettre à jour `$baseUrl` (voir ci-dessus).
