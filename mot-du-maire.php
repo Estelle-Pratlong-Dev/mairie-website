@@ -6,17 +6,11 @@ $title       = 'Le mot du Maire — Mairie de Gagnières';
 $description  = 'Le mot de bienvenue du Maire de Gagnières, commune du Gard en Occitanie.';
 $active      = 'mot-du-maire';
 $canonical   = 'mot-du-maire.php';
+$pageTitle   = 'Le mot du Maire';
+$crumbs      = [['label' => 'Accueil', 'url' => 'index.php'], ['label' => 'La Mairie'], ['label' => 'Le mot du Maire']];
 require_once __DIR__ . '/partials/icons.php';
 ob_start();
 ?>
-
-
-    <section class="page-hero">
-      <div class="container">
-        <p class="crumbs"><a href="index.php">Accueil</a> › La Mairie › Le mot du Maire</p>
-        <h1>Le mot du Maire</h1>
-      </div>
-    </section>
 
     <section class="section">
       <div class="container">

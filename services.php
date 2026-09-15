@@ -6,18 +6,12 @@ $title       = 'Vie pratique & services — Mairie de Gagnières';
 $description  = 'Tous les services utiles à Gagnières : école, centre de loisirs, bibliothèque, santé, déchets, transports, urbanisme, poste, tourisme.';
 $active      = 'services';
 $canonical   = 'services.php';
+$pageTitle   = 'Vie pratique & services';
+$pageLead    = 'École, santé, déchets, transports, tourisme… retrouvez tous les services utiles au quotidien à Gagnières et aux alentours.';
+$crumbs      = [['label' => 'Accueil', 'url' => 'index.php'], ['label' => 'Vie pratique']];
 require_once __DIR__ . '/partials/icons.php';
 ob_start();
 ?>
-
-
-    <section class="page-hero">
-      <div class="container">
-        <p class="crumbs"><a href="index.php">Accueil</a> › Vie pratique</p>
-        <h1>Vie pratique &amp; services</h1>
-        <p class="lead">École, santé, déchets, transports, tourisme… retrouvez tous les services utiles au quotidien à Gagnières et aux alentours.</p>
-      </div>
-    </section>
 
     <!-- =================== Enfance & éducation =================== -->
     <section class="section">
@@ -188,7 +182,7 @@ ob_start();
             <h3>Service Public</h3>
             <p>Toutes vos démarches administratives officielles : papiers, famille, logement, travail, retraite…</p>
             <ul class="info-list">
-              <li><?= icon('globe', 'icon') ?> <a href="https://www.service-public.fr/" target="_blank" rel="noopener">service-public.fr</a></li>
+              <li><?= icon('globe', 'icon') ?> <a href="https://www.service-public.gouv.fr/" target="_blank" rel="noopener">service-public.fr</a></li>
             </ul>
           </div>
         </div>
@@ -224,13 +218,13 @@ ob_start();
           </div>
           <div class="card" id="transports">
             <span class="icon-badge" aria-hidden="true"><?= icon('bus') ?></span>
-            <h3>Transports en commun NTecC</h3>
+            <h3>Transports en commun Alès'y</h3>
             <p>Le réseau de transports en commun dessert Gagnières et le bassin alésien.</p>
             <ul class="info-list">
-              <li><?= icon('map-pin', 'icon') ?> Agence NTecC — Gare routière, 15 avenue du Général de Gaulle, 30100 Alès</li>
+              <li><?= icon('map-pin', 'icon') ?> Agence Alès'y — Gare routière, 15 avenue du Général de Gaulle, 30100 Alès</li>
               <li><?= icon('phone', 'icon') ?> <a href="tel:+33466523131">04 66 52 31 31</a></li>
               <li><?= icon('clock', 'icon') ?> Période scolaire : lun–ven 7h30–12h30 / 13h30–18h30 · Vacances : lun–ven 8h45–12h / 13h45–17h15</li>
-              <li><?= icon('globe', 'icon') ?> <a href="https://www.ntecc.fr" target="_blank" rel="noopener">ntecc.fr</a></li>
+              <li><?= icon('globe', 'icon') ?> <a href="https://www.alesy.fr" target="_blank" rel="noopener">alesy.fr</a></li>
             </ul>
           </div>
           <div class="card" id="urbanisme">

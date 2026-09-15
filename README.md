@@ -35,6 +35,15 @@ Pour modifier le menu, le pied de page ou le `<head>` : **un seul endroit**, `pa
 Les **icônes** (téléphone, adresse…) sont centralisées dans `partials/icons.php` et s'utilisent
 par leur nom : `<?= icon('phone') ?>`. Ainsi le tracé de chaque icône n'existe qu'une seule fois.
 
+Le **bandeau de titre** des pages internes (fil d'Ariane + titre + sous-titre) est lui aussi
+généré par le gabarit. Chaque page fournit seulement ses données :
+
+```php
+$pageTitle = 'Les professionnels';
+$pageLead  = 'Commerçants, artisans et entreprises…';   // facultatif
+$crumbs    = [['label' => 'Accueil', 'url' => 'index.php'], ['label' => 'Les professionnels']];
+```
+
 ## Les pages
 
 | Fichier | Page |

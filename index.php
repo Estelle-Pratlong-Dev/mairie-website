@@ -54,51 +54,33 @@ ob_start();
       </div>
     </section>
 
-    <!-- ============================ Démarches rapides ======================= -->
-    <section class="section" id="demarches">
+    <!-- ============================ Actualités & agenda ===================== -->
+    <section class="section">
       <div class="container">
         <div class="section-head">
-          <span class="kicker">Accès rapide</span>
-          <h2>Vos démarches administratives</h2>
-          <p>Réalisez vos démarches en ligne ou trouvez le bon interlocuteur en quelques clics.</p>
+          <span class="kicker">Vie locale</span>
+          <h2>Actualités &amp; agenda</h2>
         </div>
-        <div class="grid cols-3">
-          <a class="card" href="https://www.service-public.fr/particuliers/vosdroits/N359" target="_blank" rel="noopener">
-            <span class="icon-badge" aria-hidden="true"><?= icon('file-text') ?></span>
-            <h3>État civil</h3>
-            <p>Demande d'acte de naissance, de mariage ou de décès.</p>
-            <span class="card-link">Faire ma demande <?= icon('arrow-right', 'icon') ?></span>
-          </a>
-          <a class="card" href="https://www.service-public.fr/particuliers/vosdroits/N358" target="_blank" rel="noopener">
-            <span class="icon-badge" aria-hidden="true"><?= icon('id-card') ?></span>
-            <h3>Carte d'identité &amp; passeport</h3>
-            <p>Préparez votre dossier et prenez rendez-vous.</p>
-            <span class="card-link">Prendre RDV <?= icon('arrow-right', 'icon') ?></span>
-          </a>
-          <a class="card" href="https://www.service-public.fr/particuliers/vosdroits" target="_blank" rel="noopener">
-            <span class="icon-badge" aria-hidden="true"><?= icon('help') ?></span>
-            <h3>Moments de vie</h3>
-            <p>Comment faire si… ? Naissance, déménagement, retraite…</p>
-            <span class="card-link">Consulter <?= icon('arrow-right', 'icon') ?></span>
-          </a>
-          <a class="card" href="https://www.service-public.fr/" target="_blank" rel="noopener">
-            <span class="icon-badge" aria-hidden="true"><?= icon('landmark') ?></span>
-            <h3>Droits et démarches</h3>
-            <p>Toute l'information officielle sur Service-Public.fr.</p>
-            <span class="card-link">Accéder au site <?= icon('arrow-right', 'icon') ?></span>
-          </a>
-          <a class="card" href="https://www.service-public.fr/particuliers/vosdroits/R16396" target="_blank" rel="noopener">
-            <span class="icon-badge" aria-hidden="true"><?= icon('vote') ?></span>
-            <h3>Liste électorale</h3>
-            <p>Inscrivez-vous en ligne pour pouvoir voter à Gagnières.</p>
-            <span class="card-link">M'inscrire <?= icon('arrow-right', 'icon') ?></span>
-          </a>
-          <a class="card accent" href="contact.php">
-            <span class="icon-badge" aria-hidden="true"><?= icon('alert') ?></span>
-            <h3>Demande d'intervention</h3>
-            <p>Signalez un problème technique dans la commune. Urgences : 06 58 24 20 30.</p>
-            <span class="card-link">Nous signaler <?= icon('arrow-right', 'icon') ?></span>
-          </a>
+        <div class="grid cols-2">
+          <article class="news-card">
+            <a href="img/event/breves-09-marche.jpg" target="_blank" rel="noopener" aria-label="Lire les Brèves de Gagnières n°09">
+              <img class="card-img" style="margin: 0; width: 100%; border-radius: 0; height: 180px;" src="img/event/breves-09-marche.jpg" alt="Brèves de Gagnières n°09 — le marché hebdomadaire du mercredi" loading="lazy">
+            </a>
+            <div class="news-body">
+              <time datetime="2026-06-03">3 juin 2026 — Brèves de Gagnières n°09</time>
+              <h3>Du nouveau sur le marché hebdomadaire du mercredi</h3>
+              <p>Félix Mossino (Les Bergers des Cruzières — œufs plein air, agneaux, produits fermiers) et Aurélie Carrat (Manalex — fleurs, plantes, compositions florales et accessoires) rejoignent le marché du mercredi. Tous nos vœux de réussite à eux !</p>
+            </div>
+          </article>
+          <div class="card">
+            <span class="icon-badge" aria-hidden="true"><?= icon('facebook') ?></span>
+            <h3>Suivez l'actualité au quotidien</h3>
+            <p>L'actualité de la commune se vit aussi sur Facebook : annonces de la mairie, alertes, photos et vie du village.</p>
+            <ul class="info-list">
+              <li><?= icon('arrow-right', 'icon') ?> <a href="https://www.facebook.com/MairieGagnieres" target="_blank" rel="noopener">Page officielle de la mairie</a></li>
+              <li><?= icon('arrow-right', 'icon') ?> <a href="https://www.facebook.com/groups/509135176230743" target="_blank" rel="noopener">Groupe des habitants du village</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -141,33 +123,51 @@ ob_start();
       </div>
     </section>
 
-    <!-- ============================ Actualités & agenda ===================== -->
-    <section class="section">
+    <!-- ============================ Démarches rapides ======================= -->
+    <section class="section" id="demarches">
       <div class="container">
         <div class="section-head">
-          <span class="kicker">Vie locale</span>
-          <h2>Actualités &amp; agenda</h2>
+          <span class="kicker">Accès rapide</span>
+          <h2>Vos démarches administratives</h2>
+          <p>Réalisez vos démarches en ligne ou trouvez le bon interlocuteur en quelques clics.</p>
         </div>
-        <div class="grid cols-2">
-          <article class="news-card">
-            <a href="img/event/breves-09-marche.jpg" target="_blank" rel="noopener" aria-label="Lire les Brèves de Gagnières n°09">
-              <img class="card-img" style="margin: 0; width: 100%; border-radius: 0; height: 180px;" src="img/event/breves-09-marche.jpg" alt="Brèves de Gagnières n°09 — le marché hebdomadaire du mercredi" loading="lazy">
-            </a>
-            <div class="news-body">
-              <time datetime="2026-06-03">3 juin 2026 — Brèves de Gagnières n°09</time>
-              <h3>Du nouveau sur le marché hebdomadaire du mercredi</h3>
-              <p>Félix Mossino (Les Bergers des Cruzières — œufs plein air, agneaux, produits fermiers) et Aurélie Carrat (Manalex — fleurs, plantes, compositions florales et accessoires) rejoignent le marché du mercredi. Tous nos vœux de réussite à eux !</p>
-            </div>
-          </article>
-          <div class="card">
-            <span class="icon-badge" aria-hidden="true"><?= icon('facebook') ?></span>
-            <h3>Suivez l'actualité au quotidien</h3>
-            <p>L'actualité de la commune se vit aussi sur Facebook : annonces de la mairie, alertes, photos et vie du village.</p>
-            <ul class="info-list">
-              <li><?= icon('arrow-right', 'icon') ?> <a href="https://www.facebook.com/MairieGagnieres" target="_blank" rel="noopener">Page officielle de la mairie</a></li>
-              <li><?= icon('arrow-right', 'icon') ?> <a href="https://www.facebook.com/groups/509135176230743" target="_blank" rel="noopener">Groupe des habitants du village</a></li>
-            </ul>
-          </div>
+        <div class="grid cols-3">
+          <a class="card" href="https://www.service-public.gouv.fr/particuliers/vosdroits/N359" target="_blank" rel="noopener">
+            <span class="icon-badge" aria-hidden="true"><?= icon('file-text') ?></span>
+            <h3>État civil</h3>
+            <p>Demande d'acte de naissance, de mariage ou de décès.</p>
+            <span class="card-link">Faire ma demande <?= icon('arrow-right', 'icon') ?></span>
+          </a>
+          <a class="card" href="https://www.service-public.gouv.fr/particuliers/vosdroits/N358" target="_blank" rel="noopener">
+            <span class="icon-badge" aria-hidden="true"><?= icon('id-card') ?></span>
+            <h3>Carte d'identité &amp; passeport</h3>
+            <p>Préparez votre dossier et prenez rendez-vous.</p>
+            <span class="card-link">Prendre RDV <?= icon('arrow-right', 'icon') ?></span>
+          </a>
+          <a class="card" href="https://www.service-public.gouv.fr/particuliers/vosdroits" target="_blank" rel="noopener">
+            <span class="icon-badge" aria-hidden="true"><?= icon('help') ?></span>
+            <h3>Moments de vie</h3>
+            <p>Comment faire si… ? Naissance, déménagement, retraite…</p>
+            <span class="card-link">Consulter <?= icon('arrow-right', 'icon') ?></span>
+          </a>
+          <a class="card" href="https://www.service-public.gouv.fr/" target="_blank" rel="noopener">
+            <span class="icon-badge" aria-hidden="true"><?= icon('landmark') ?></span>
+            <h3>Droits et démarches</h3>
+            <p>Toute l'information officielle sur Service-Public.fr.</p>
+            <span class="card-link">Accéder au site <?= icon('arrow-right', 'icon') ?></span>
+          </a>
+          <a class="card" href="https://www.service-public.gouv.fr/particuliers/vosdroits/R16396" target="_blank" rel="noopener">
+            <span class="icon-badge" aria-hidden="true"><?= icon('vote') ?></span>
+            <h3>Liste électorale</h3>
+            <p>Inscrivez-vous en ligne pour pouvoir voter à Gagnières.</p>
+            <span class="card-link">M'inscrire <?= icon('arrow-right', 'icon') ?></span>
+          </a>
+          <a class="card accent" href="contact.php">
+            <span class="icon-badge" aria-hidden="true"><?= icon('alert') ?></span>
+            <h3>Demande d'intervention</h3>
+            <p>Signalez un problème technique dans la commune. Urgences : 06 58 24 20 30.</p>
+            <span class="card-link">Nous signaler <?= icon('arrow-right', 'icon') ?></span>
+          </a>
         </div>
       </div>
     </section>
