@@ -8,7 +8,7 @@ $active      = 'mot-du-maire';
 $canonical   = 'mot-du-maire.php';
 $pageTitle   = 'Le mot du Maire';
 $crumbs      = [['label' => 'Accueil', 'url' => 'index.php'], ['label' => 'La Mairie'], ['label' => 'Le mot du Maire']];
-require_once __DIR__ . '/partials/icons.php';
+require_once __DIR__ . '/../partials/icons.php';
 ob_start();
 ?>
 
@@ -46,4 +46,4 @@ ob_start();
       </div>
     </section>
 
-<?php $content = ob_get_clean(); include 'partials/layout.php'; ?>
+<?php $content = ob_get_clean(); include __DIR__ . '/../partials/layout.php'; ?>

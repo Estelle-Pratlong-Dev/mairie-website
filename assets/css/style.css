@@ -252,7 +252,7 @@ a:hover { color: var(--slate-900); }
   /* Voile sombre uniquement derrière le texte (à gauche), paysage dégagé à droite */
   background:
     linear-gradient(100deg, rgba(20, 24, 29, 0.78) 0%, rgba(20, 24, 29, 0.55) 38%, rgba(20, 24, 29, 0.18) 70%, rgba(20, 24, 29, 0.05) 100%),
-    url("../../img/village/ville-de-gagnieres.jpg") center / cover no-repeat;
+    url("../img/village/ville-de-gagnieres.jpg") center / cover no-repeat;
   color: #fff;
   overflow: hidden;
 }
@@ -361,80 +361,6 @@ a:hover { color: var(--slate-900); }
 .breadcrumb [aria-current="page"] { color: var(--slate-900); font-weight: 600; }
 .breadcrumb svg { width: 15px; height: 15px; }
 .page-hero p.lead { color: var(--ink-soft); max-width: 65ch; margin: 0; font-size: 1.05rem; }
-
-/* ------------------------------- Flash info ------------------------------- */
-
-.flash-section {
-  background: var(--blue-100);
-  border-block: 1px solid #c9dff0;
-  padding-block: clamp(2rem, 4vw, 3rem);
-}
-
-.flash-head {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  margin-bottom: 1.3rem;
-}
-.flash-head .icon-badge {
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
-  display: grid;
-  place-items: center;
-  background: var(--blue-500);
-  color: #fff;
-}
-.flash-head .icon-badge svg { width: 22px; height: 22px; }
-.flash-head h2 { margin: 0; font-size: 1.45rem; }
-
-.flash-list {
-  display: grid;
-  gap: 1rem;
-}
-
-.flash-card {
-  background: #fff;
-  border: 1px solid #c9dff0;
-  border-left: 5px solid var(--blue-500);
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-soft);
-  padding: 1.1rem 1.3rem;
-  display: flex;
-  gap: 1.2rem;
-  align-items: flex-start;
-}
-
-.flash-card .flash-affiche {
-  flex: none;
-  width: 110px;
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  display: block;
-}
-.flash-card .flash-affiche img { width: 100%; height: auto; }
-
-.flash-card h3 { margin: 0 0 0.3rem; font-size: 1.08rem; }
-.flash-card .flash-quand {
-  margin: 0 0 0.15rem;
-  font-family: var(--font-title);
-  font-weight: 600;
-  font-size: 0.82rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--blue-600);
-}
-.flash-card .flash-texte {
-  margin: 0;
-  font-size: 0.93rem;
-  color: var(--ink-soft);
-}
-
-@media (max-width: 640px) {
-  .flash-card { flex-direction: column; }
-  .flash-card .flash-affiche { width: 100%; max-width: 220px; }
-}
 
 /* ------------------------------ Images & galerie -------------------------- */
 
@@ -807,41 +733,6 @@ a.card:hover .card-link { color: var(--slate-900); }
 .hours-table tr:last-child td { border-bottom: none; }
 .hours-table .closed { color: var(--ink-soft); font-style: italic; }
 
-/* ------------------------------- Actualités ------------------------------ */
-
-.news-card {
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: var(--shadow-soft);
-}
-.news-card .news-banner {
-  height: 110px;
-  background: linear-gradient(135deg, var(--blue-600), var(--blue-500));
-  display: grid;
-  place-items: center;
-  color: rgba(255, 255, 255, 0.85);
-}
-.news-card .news-banner svg { width: 38px; height: 38px; }
-.news-card .news-body { padding: 1.3rem 1.5rem 1.5rem; }
-.news-card time {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--blue-600);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-
-.empty-state {
-  border: 2px dashed var(--line);
-  border-radius: var(--radius);
-  padding: 2rem;
-  text-align: center;
-  color: var(--ink-soft);
-  background: #fff;
-}
-
 /* ------------------------------ Mot du maire ----------------------------- */
 
 .prose {
@@ -1086,6 +977,76 @@ textarea { min-height: 160px; resize: vertical; }
   .footer-main { grid-template-columns: 1fr; gap: 1.8rem; }
   .topbar-inner { justify-content: center; }
   .person { flex-direction: row; }
+}
+
+/* ================= Actualités : carrousel de cartes portrait ============== */
+.carousel { position: relative; }
+.carousel-track { display: flex; align-items: stretch; gap: 1.25rem; list-style: none; margin: 0; padding: 0; }
+
+/* 3 annonces ou moins : largeur FIXE à 1/3, cartes centrées. À 3 elles
+   remplissent la largeur ; à 1 ou 2 elles gardent leur taille et se centrent
+   (marges équilibrées), sans jamais s'étirer. */
+.carousel.is-static .carousel-track { flex-wrap: wrap; justify-content: center; }
+.carousel.is-static .carousel-slide { flex: 0 0 calc((100% - 2.5rem) / 3); }
+
+/* Plus de 3 annonces : 3 cartes visibles + défilement horizontal. */
+.carousel.is-scroll .carousel-track {
+  flex-wrap: nowrap; overflow-x: auto; scroll-snap-type: x mandatory;
+  scroll-behavior: smooth; scrollbar-width: thin; padding-bottom: 0.5rem;
+}
+.carousel.is-scroll .carousel-slide { flex: 0 0 calc((100% - 2.5rem) / 3); scroll-snap-align: start; }
+
+/* Carte portrait : les infos EN HAUT, l'image EN DESSOUS (affichée en entier). */
+.actu-card {
+  display: flex; flex-direction: column; height: 100%;
+  background: #fff; border: 1px solid var(--slate-100); border-radius: 14px;
+  overflow: hidden; box-shadow: var(--shadow-soft);
+}
+/* Le corps occupe la place restante -> toutes les cartes ont la même hauteur. */
+.actu-body { flex: 1 1 auto; padding: 1.1rem 1.25rem 1.2rem; }
+.actu-body time {
+  display: inline-flex; align-items: center; gap: 0.4rem; color: var(--blue-600);
+  font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.04em;
+}
+.actu-body time svg { width: 15px; height: 15px; }
+.actu-body h3 { margin: 0.45rem 0 0.5rem; font-size: 1.12rem; color: var(--slate-900); }
+.actu-body p {
+  margin: 0; color: var(--ink-soft); font-size: 0.93rem;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+}
+/* Image dans une zone de hauteur FIXE, affichée EN ENTIER (jamais rognée). */
+.actu-media { flex: 0 0 auto; height: 230px; background: var(--slate-050); }
+.actu-media img { width: 100%; height: 100%; object-fit: contain; display: block; }
+
+/* Flèches de défilement (uniquement en mode défilable) */
+.carousel-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 40px; height: 40px; border-radius: 50%; cursor: pointer; z-index: 2;
+  border: 1px solid var(--slate-100); background: #fff; color: var(--slate-900);
+  display: inline-flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 10px rgba(20, 30, 45, 0.15);
+}
+.carousel-arrow:hover { background: var(--blue-600); color: #fff; border-color: var(--blue-600); }
+.carousel-arrow:disabled { opacity: 0; pointer-events: none; }
+.carousel-arrow svg { width: 20px; height: 20px; }
+.carousel-prev { left: -10px; }
+.carousel-next { right: -10px; }
+.carousel-prev svg { transform: rotate(90deg); }
+.carousel-next svg { transform: rotate(-90deg); }
+
+/* Encadré « Suivez l'actualité » — sous les actualités, pleine largeur */
+.follow-card { display: flex; align-items: flex-start; gap: 1.25rem; margin-top: 1.5rem; }
+.follow-card .icon-badge { flex-shrink: 0; }
+.follow-card h3 { margin-top: 0; }
+.follow-links { margin-top: 0.6rem; margin-bottom: 0; }
+
+@media (max-width: 900px) {
+  .carousel.is-scroll .carousel-slide,
+  .carousel.is-static .carousel-slide { flex-basis: calc((100% - 1.25rem) / 2); }
+}
+@media (max-width: 600px) {
+  .carousel.is-scroll .carousel-slide { flex-basis: 84%; }
+  .carousel.is-static .carousel-slide { flex-basis: 100%; }
 }
 
 @media (prefers-reduced-motion: reduce) {

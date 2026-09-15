@@ -26,7 +26,7 @@ $canonical   = 'professionnels.php';
 $pageTitle   = 'Les professionnels';
 $pageLead    = 'Commerçants, artisans et entreprises font vivre Gagnières au quotidien. Faites-leur confiance !';
 $crumbs      = [['label' => 'Accueil', 'url' => 'index.php'], ['label' => 'Les professionnels']];
-require_once __DIR__ . '/partials/icons.php';
+require_once __DIR__ . '/../partials/icons.php';
 
 $sections = [
     [
@@ -175,7 +175,7 @@ ob_start();
             </ul>
 <?php endif; ?>
 <?php if ($img): ?>
-            <a class="pro-doc js-lightbox" href="img/pro/<?= $img ?>" data-alt="<?= htmlspecialchars($p['name']) ?>" target="_blank" rel="noopener">Voir l'image</a>
+            <a class="pro-doc js-lightbox" href="assets/img/pro/<?= $img ?>" data-alt="<?= htmlspecialchars($p['name']) ?>" target="_blank" rel="noopener">Voir l'image</a>
 <?php endif; ?>
 <?php if (!empty($p['facebook']) || !empty($p['instagram'])): ?>
             <div class="pro-links">
@@ -203,4 +203,4 @@ ob_start();
       </div>
     </section>
 
-<?php $content = ob_get_clean(); include 'partials/layout.php'; ?>
+<?php $content = ob_get_clean(); include __DIR__ . '/../partials/layout.php'; ?>

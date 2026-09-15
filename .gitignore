@@ -2,7 +2,7 @@
 .claude/
 
 # Artefacts d'enregistrement de page web
-img/mairie.htm
+assets/img/mairie.htm
 *_files/
 
 # Système

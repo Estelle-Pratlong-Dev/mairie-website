@@ -10,7 +10,7 @@ $robots      = 'noindex, follow';
 $pageTitle   = 'Politique de confidentialité';
 $pageLead    = 'Protection de vos données personnelles (RGPD).';
 $crumbs      = [['label' => 'Accueil', 'url' => 'index.php'], ['label' => 'Politique de confidentialité']];
-require_once __DIR__ . '/partials/icons.php';
+require_once __DIR__ . '/../partials/icons.php';
 ob_start();
 ?>
 
@@ -60,4 +60,4 @@ ob_start();
       </div>
     </section>
 
-<?php $content = ob_get_clean(); include 'partials/layout.php'; ?>
+<?php $content = ob_get_clean(); include __DIR__ . '/../partials/layout.php'; ?>

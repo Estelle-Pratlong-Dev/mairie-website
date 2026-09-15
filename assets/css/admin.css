@@ -1,0 +1,112 @@
+/* ============================================================================
+   ESPACE D'ADMINISTRATION — /admin
+   Réutilise les variables de couleur et les champs de formulaire de style.css.
+   ========================================================================== */
+
+body.admin { background: var(--slate-050); color: var(--ink); }
+.admin svg { flex-shrink: 0; }
+.admin .btn { display: inline-flex; align-items: center; gap: 0.4rem; }
+.admin .btn svg { width: 18px; height: 18px; }
+
+/* --- Barre supérieure ----------------------------------------------------- */
+.admin-bar { background: var(--slate-900); color: #fff; }
+.admin-bar-inner {
+  max-width: 960px; margin: 0 auto; padding: 0.8rem 1.25rem;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; flex-wrap: wrap;
+}
+.admin-brand { font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; }
+.admin-brand svg { width: 20px; height: 20px; }
+.admin-nav { display: flex; align-items: center; gap: 1.25rem; }
+.admin-nav a {
+  color: #cfe0ef; text-decoration: none; font-size: 0.95rem;
+  display: inline-flex; align-items: center; gap: 0.35rem;
+}
+.admin-nav a:hover { color: #fff; }
+.admin-nav svg { width: 16px; height: 16px; }
+.admin-nav .admin-logout { color: #f3c9c6; }
+
+/* --- Zone de contenu ------------------------------------------------------ */
+.admin-main { padding: 2rem 1.25rem 4rem; }
+.admin-container { max-width: 960px; margin: 0 auto; }
+.admin-head {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; flex-wrap: wrap; margin-bottom: 0.4rem;
+}
+.admin-head h1 { font-size: 1.6rem; margin: 0; color: var(--slate-900); }
+.admin-intro { color: var(--ink-soft); margin: 0 0 1.5rem; }
+
+/* --- Messages (succès / erreur) ------------------------------------------- */
+.admin-flash {
+  display: flex; align-items: flex-start; gap: 0.6rem;
+  padding: 0.85rem 1rem; border-radius: 10px; margin-bottom: 1.5rem;
+}
+.admin-flash svg { width: 20px; height: 20px; margin-top: 1px; }
+.admin-flash ul { margin: 0.4rem 0 0; padding-left: 1.1rem; }
+.admin-flash-succes { background: #e7f6ec; color: #12683a; border: 1px solid #b6e2c6; }
+.admin-flash-erreur { background: #fdeceb; color: #a1201a; border: 1px solid #f3c5c1; }
+
+/* --- Connexion ------------------------------------------------------------ */
+.admin-login {
+  max-width: 440px; margin: 2rem auto; background: #fff;
+  border: 1px solid var(--slate-100); border-radius: 14px; padding: 2rem;
+  box-shadow: 0 6px 24px rgba(20, 30, 45, 0.06);
+}
+.admin-login h1 {
+  font-size: 1.4rem; margin: 0 0 0.4rem; color: var(--slate-900);
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.admin-login h1 svg { width: 24px; height: 24px; }
+
+/* --- Liste des annonces --------------------------------------------------- */
+.admin-liste { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.9rem; }
+.admin-item {
+  display: flex; gap: 1rem; align-items: center; background: #fff;
+  border: 1px solid var(--slate-100); border-radius: 12px; padding: 0.9rem;
+}
+.admin-item.est-expiree { opacity: 0.72; }
+.admin-vignette { width: 72px; height: 72px; object-fit: cover; border-radius: 8px; flex-shrink: 0; background: var(--slate-050); }
+.admin-vignette-vide { display: flex; align-items: center; justify-content: center; color: var(--slate-600); }
+.admin-vignette-vide svg { width: 28px; height: 28px; }
+.admin-item-corps { flex: 1; min-width: 0; }
+.admin-item-corps h2 { font-size: 1.1rem; margin: 0.25rem 0; color: var(--slate-900); }
+.admin-meta { color: var(--ink-soft); font-size: 0.9rem; margin: 0; display: flex; align-items: center; gap: 0.35rem; }
+.admin-meta svg { width: 15px; height: 15px; }
+.admin-badge {
+  display: inline-block; font-size: 0.72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.03em;
+  padding: 0.15rem 0.5rem; border-radius: 999px;
+}
+.badge-active { background: #e7f6ec; color: #12683a; }
+.badge-expiree { background: var(--slate-100); color: var(--slate-700); }
+.admin-item-actions { display: flex; flex-direction: column; gap: 0.5rem; flex-shrink: 0; }
+.admin-item-actions form { margin: 0; }
+.admin-item-actions .btn { padding: 0.45rem 0.8rem; font-size: 0.9rem; white-space: nowrap; }
+
+/* Bouton « supprimer » (rouge, discret) */
+.btn-danger { background: #fff; color: #b3261e; border: 1px solid #e6c3c0; }
+.btn-danger:hover { background: #b3261e; color: #fff; border-color: #b3261e; }
+
+/* --- Aucun contenu -------------------------------------------------------- */
+.admin-vide {
+  text-align: center; background: #fff; border: 1px dashed var(--slate-100);
+  border-radius: 14px; padding: 3rem 1.5rem; color: var(--ink-soft);
+}
+.admin-vide svg { width: 40px; height: 40px; color: var(--slate-600); margin-bottom: 0.5rem; }
+.admin-vide p { margin: 0 0 1.2rem; }
+
+/* --- Formulaire d'édition ------------------------------------------------- */
+.admin-form {
+  max-width: 640px; background: #fff; border: 1px solid var(--slate-100);
+  border-radius: 14px; padding: 1.75rem;
+}
+.admin-affiche-actuelle { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.6rem; }
+.admin-affiche-actuelle img { width: 120px; height: auto; border-radius: 8px; border: 1px solid var(--slate-100); }
+.admin-check { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.9rem; color: var(--ink-soft); }
+
+/* --- Responsive ----------------------------------------------------------- */
+@media (max-width: 640px) {
+  .admin-item { flex-wrap: wrap; }
+  .admin-item-actions { flex-direction: row; width: 100%; }
+  .admin-item-actions .btn { flex: 1; justify-content: center; }
+}

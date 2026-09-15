@@ -5,14 +5,41 @@
 # Encodage par défaut des pages
 AddDefaultCharset UTF-8
 
-# Page servie par défaut pour un dossier
-DirectoryIndex index.php
+# Page servie par défaut pour un dossier.
+# index.php d'abord (utile pour /admin/) ; à la racine, il n'y en a pas :
+# la page d'accueil est servie via la réécriture plus bas (^$ -> pages/index.php),
+# et pages/index.php sert de filet de sécurité si la réécriture est indisponible.
+DirectoryIndex index.php pages/index.php
+
+# Ne jamais afficher la liste des fichiers d'un dossier sans page d'index.
+Options -Indexes
 
 # Page d'erreur 404 personnalisée
-ErrorDocument 404 /404.php
+ErrorDocument 404 /pages/404.php
 
-# Interdire l'accès direct au dossier des gabarits (header, layout…)
+# Interdire l'accès direct aux dossiers internes (gabarits, données…)
 RedirectMatch 403 ^/partials/
+RedirectMatch 403 ^/data/
+# Fichiers internes de l'administration (socle, non destinés à un accès direct)
+RedirectMatch 403 ^/admin/_
+
+# ------------------------------------------------------------------
+#  URLs propres : les pages vivent dans pages/ mais restent
+#  accessibles à la racine (ex. /services.php → pages/services.php).
+# ------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Accueil : la racine « / » sert la page d'accueil
+  RewriteRule ^$ pages/index.php [L]
+
+  # Une adresse de type /nom-de-page.php qui n'existe pas telle quelle
+  # à la racine est servie depuis pages/ (sitemap.php, robots.txt et les
+  # fichiers réels de assets/ ne sont pas concernés : ils existent déjà).
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^([a-z0-9-]+\.php)$ pages/$1 [L]
+</IfModule>
 
 # Compression des fichiers texte (gain de vitesse)
 <IfModule mod_deflate.c>

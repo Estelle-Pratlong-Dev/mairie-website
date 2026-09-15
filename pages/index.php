@@ -6,8 +6,9 @@ $title       = 'Mairie de Gagnières — Site officiel de la commune (Gard, Occi
 $description  = "Site officiel de la mairie de Gagnières, commune du Gard en Occitanie, à la limite de l'Ardèche. Démarches, services, associations et vie locale.";
 $active      = 'accueil';
 $canonical   = 'index.php';
-$includeAnnonces = true;   // charge le module "Flash info" (voir partials/layout.php)
-require_once __DIR__ . '/partials/icons.php';
+require_once __DIR__ . '/../partials/icons.php';
+require_once __DIR__ . '/../partials/annonces.php';
+$annoncesActives = annonces_actives();   // annonces « Flash info » gérées dans /admin, affichées en carrousel
 ob_start();
 ?>
 
@@ -38,45 +39,60 @@ ob_start();
       </div>
     </section>
 
-    <!-- ============================ Flash info ==============================
-         Les annonces se gèrent dans le fichier assets/js/annonces.js.
-         Ce bloc s'affiche seulement s'il y a des annonces en cours et
-         disparaît automatiquement quand toutes les dates sont passées. -->
-    <section class="flash-section" id="flash-info" hidden aria-label="Flash info">
-      <div class="container">
-        <div class="flash-head">
-          <span class="icon-badge" aria-hidden="true">
-            <?= icon('megaphone') ?>
-          </span>
-          <h2>Flash info</h2>
-        </div>
-        <div class="flash-list" id="flash-list"></div>
-      </div>
-    </section>
 
-    <!-- ============================ Actualités & agenda ===================== -->
+    <!-- ============================ Actualités & agenda =====================
+         Le carrousel affiche les annonces « Flash info » gérées dans /admin.
+         Chaque annonce disparaît d'elle-même passée sa date de fin ; quand il
+         n'en reste aucune, le carrousel n'apparaît pas du tout (seul l'encadré
+         « Suivez l'actualité » reste, sous le titre). -->
     <section class="section">
       <div class="container">
         <div class="section-head">
           <span class="kicker">Vie locale</span>
           <h2>Actualités &amp; agenda</h2>
         </div>
-        <div class="grid cols-2">
-          <article class="news-card">
-            <a href="img/event/breves-09-marche.jpg" target="_blank" rel="noopener" aria-label="Lire les Brèves de Gagnières n°09">
-              <img class="card-img" style="margin: 0; width: 100%; border-radius: 0; height: 180px;" src="img/event/breves-09-marche.jpg" alt="Brèves de Gagnières n°09 — le marché hebdomadaire du mercredi" loading="lazy">
-            </a>
-            <div class="news-body">
-              <time datetime="2026-06-03">3 juin 2026 — Brèves de Gagnières n°09</time>
-              <h3>Du nouveau sur le marché hebdomadaire du mercredi</h3>
-              <p>Félix Mossino (Les Bergers des Cruzières — œufs plein air, agneaux, produits fermiers) et Aurélie Carrat (Manalex — fleurs, plantes, compositions florales et accessoires) rejoignent le marché du mercredi. Tous nos vœux de réussite à eux !</p>
-            </div>
-          </article>
-          <div class="card">
-            <span class="icon-badge" aria-hidden="true"><?= icon('facebook') ?></span>
+
+<?php if ($annoncesActives): $defilable = count($annoncesActives) > 3; ?>
+        <div class="carousel <?= $defilable ? 'is-scroll' : 'is-static' ?>" data-carousel aria-label="Actualités de la commune">
+<?php if ($defilable): ?>
+          <button type="button" class="carousel-arrow carousel-prev" aria-label="Faire défiler vers la gauche"><?= icon('chevron-down', 'icon') ?></button>
+<?php endif; ?>
+          <ul class="carousel-track">
+<?php foreach ($annoncesActives as $a): ?>
+            <li class="carousel-slide">
+              <article class="actu-card">
+                <div class="actu-body">
+<?php if (!empty($a['quand'])): ?>
+                  <time datetime="<?= htmlspecialchars($a['date_fin'] ?? '') ?>"><?= icon('calendar', 'icon') ?> <?= htmlspecialchars($a['quand']) ?></time>
+<?php endif; ?>
+                  <h3><?= htmlspecialchars($a['titre']) ?></h3>
+<?php if (!empty($a['texte'])): ?>
+                  <p><?= htmlspecialchars($a['texte']) ?></p>
+<?php endif; ?>
+                </div>
+<?php if (!empty($a['affiche'])): ?>
+                <a class="actu-media js-lightbox" href="assets/img/event/<?= htmlspecialchars($a['affiche']) ?>" data-alt="<?= htmlspecialchars($a['titre']) ?>" target="_blank" rel="noopener">
+                  <img src="assets/img/event/<?= htmlspecialchars($a['affiche']) ?>" alt="<?= htmlspecialchars($a['titre']) ?>" loading="lazy">
+                </a>
+<?php endif; ?>
+              </article>
+            </li>
+<?php endforeach; ?>
+          </ul>
+<?php if ($defilable): ?>
+          <button type="button" class="carousel-arrow carousel-next" aria-label="Faire défiler vers la droite"><?= icon('chevron-down', 'icon') ?></button>
+<?php endif; ?>
+        </div>
+<?php endif; ?>
+
+        <!-- Encadré « Suivez l'actualité » — invite à suivre l'actu (et prend le
+             relais quand il n'y a aucune annonce en cours). -->
+        <div class="card follow-card">
+          <span class="icon-badge" aria-hidden="true"><?= icon('facebook') ?></span>
+          <div>
             <h3>Suivez l'actualité au quotidien</h3>
             <p>L'actualité de la commune se vit aussi sur Facebook : annonces de la mairie, alertes, photos et vie du village.</p>
-            <ul class="info-list">
+            <ul class="info-list follow-links">
               <li><?= icon('arrow-right', 'icon') ?> <a href="<?= $mairie['facebook'] ?>" target="_blank" rel="noopener">Page officielle de la mairie</a></li>
               <li><?= icon('arrow-right', 'icon') ?> <a href="<?= $mairie['facebook_groupe'] ?>" target="_blank" rel="noopener">Groupe des habitants du village</a></li>
             </ul>
@@ -100,11 +116,11 @@ ob_start();
               <a class="btn btn-outline" href="mot-du-maire.php">Le mot du Maire</a>
               <a class="btn btn-outline" href="conseil-municipal.php">Le Conseil municipal</a>
             </div>
-            <img class="img-rounded" src="img/village/mairie.jpg" alt="La mairie de Gagnières, place de la Mairie" loading="lazy" style="margin-top: 1.6rem;">
+            <img class="img-rounded" src="assets/img/village/mairie.jpg" alt="La mairie de Gagnières, place de la Mairie" loading="lazy" style="margin-top: 1.6rem;">
           </div>
           <div class="grid" style="gap: 1rem;">
             <a class="card" href="services.php#musee-de-la-mine">
-              <img class="card-img" src="img/village/musee-mine.jpeg" alt="Galerie du Musée de la Mine de Gagnières" loading="lazy">
+              <img class="card-img" src="assets/img/village/musee-mine.jpeg" alt="Galerie du Musée de la Mine de Gagnières" loading="lazy">
               <h3>Musée de la Mine</h3>
               <p>« Gagnières du Temps des Mines à Aujourd'hui » — la mémoire minière du village. Entrée gratuite.</p>
             </a>
@@ -114,7 +130,7 @@ ob_start();
               <p>Lecture, ressources documentaires et accès informatique pour tous, rue de l'Église.</p>
             </a>
             <a class="card" href="https://www.tourisme-ceze-cevennes.com/" target="_blank" rel="noopener">
-              <img class="card-img" src="img/village/voie-verte.jpeg" alt="La voie verte ombragée de Gagnières" loading="lazy">
+              <img class="card-img" src="assets/img/village/voie-verte.jpeg" alt="La voie verte ombragée de Gagnières" loading="lazy">
               <h3>Tourisme vert</h3>
               <p>Randonnées, rivières et patrimoine avec l'Office de Tourisme Cèze Cévennes.</p>
             </a>
@@ -181,27 +197,27 @@ ob_start();
         </div>
         <div class="photo-grid">
           <figure>
-            <img src="img/village/pont.jpeg" alt="Un des ponts sur la Ganière, aux couleurs d'automne" loading="lazy">
+            <img src="assets/img/village/pont.jpeg" alt="Un des ponts sur la Ganière, aux couleurs d'automne" loading="lazy">
             <figcaption>Un pont sur la Ganière</figcaption>
           </figure>
           <figure>
-            <img src="img/village/riviere.jpeg" alt="La Ganière au cœur de la verdure" loading="lazy">
+            <img src="assets/img/village/riviere.jpeg" alt="La Ganière au cœur de la verdure" loading="lazy">
             <figcaption>La Ganière</figcaption>
           </figure>
           <figure>
-            <img src="img/village/voie-verte2.jpeg" alt="La voie verte sous les arbres" loading="lazy">
+            <img src="assets/img/village/voie-verte2.jpeg" alt="La voie verte sous les arbres" loading="lazy">
             <figcaption>La voie verte</figcaption>
           </figure>
           <figure>
-            <img src="img/village/rue.jpeg" alt="Une rue du village" loading="lazy">
+            <img src="assets/img/village/rue.jpeg" alt="Une rue du village" loading="lazy">
             <figcaption>Au cœur du village</figcaption>
           </figure>
           <figure>
-            <img src="img/village/entree-village.jpeg" alt="L'entrée du village" loading="lazy">
+            <img src="assets/img/village/entree-village.jpeg" alt="L'entrée du village" loading="lazy">
             <figcaption>L'entrée du village</figcaption>
           </figure>
           <figure>
-            <img src="img/village/vue.jpeg" alt="Vue panoramique sur Gagnières et les Cévennes" loading="lazy">
+            <img src="assets/img/village/vue.jpeg" alt="Vue panoramique sur Gagnières et les Cévennes" loading="lazy">
             <figcaption>Gagnières au creux des Cévennes</figcaption>
           </figure>
         </div>
@@ -221,4 +237,4 @@ ob_start();
       </div>
     </section>
 
-<?php $content = ob_get_clean(); include 'partials/layout.php'; ?>
+<?php $content = ob_get_clean(); include __DIR__ . '/../partials/layout.php'; ?>
