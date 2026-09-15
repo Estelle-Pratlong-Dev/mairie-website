@@ -9,7 +9,7 @@ $canonical   = 'services.php';
 $pageTitle   = 'Vie pratique & services';
 $pageLead    = 'École, santé, déchets, transports, tourisme… retrouvez tous les services utiles au quotidien à Gagnières et aux alentours.';
 $crumbs      = [['label' => 'Accueil', 'url' => 'index.php'], ['label' => 'Vie pratique']];
-require_once __DIR__ . '/partials/icons.php';
+require_once __DIR__ . '/../partials/icons.php';
 ob_start();
 ?>
 
@@ -301,4 +301,4 @@ ob_start();
       </div>
     </section>
 
-<?php $content = ob_get_clean(); include 'partials/layout.php'; ?>
+<?php $content = ob_get_clean(); include __DIR__ . '/../partials/layout.php'; ?>

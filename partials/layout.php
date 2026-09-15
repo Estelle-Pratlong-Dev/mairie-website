@@ -14,10 +14,10 @@
  *       ... sections de la page ...
  *     <?php
  *     $content = ob_get_clean();        // le contenu est rangé dans $content
- *     include 'partials/layout.php';    // le gabarit l'insère dans <main>
+ *     include __DIR__ . '/../partials/layout.php';   // le gabarit l'insère dans <main>
  *
  * Variables attendues (toutes facultatives, valeurs par défaut ci-dessous) :
- *   $title, $description, $active, $canonical, $robots, $includeAnnonces
+ *   $title, $description, $active, $canonical, $robots
  * ========================================================================== */
 
 $title           = $title           ?? 'Mairie de Gagnières';
@@ -26,7 +26,6 @@ $active          = $active          ?? '';
 $canonical       = $canonical       ?? '';
 $robots          = $robots          ?? 'index, follow';
 $content         = $content         ?? '';
-$includeAnnonces = $includeAnnonces ?? false;
 $pageTitle       = $pageTitle       ?? '';   // titre du bandeau interne (H1) — vide sur l'accueil
 $pageLead        = $pageLead        ?? '';   // sous-titre facultatif du bandeau
 $crumbs          = $crumbs          ?? [];   // fil d'Ariane, voir breadcrumb()
@@ -67,7 +66,7 @@ function navClass(string $key, string $active, string $base = ''): string {
   <meta property="og:title" content="<?= htmlspecialchars($title) ?>">
   <meta property="og:description" content="<?= htmlspecialchars($description) ?>">
   <meta property="og:url" content="<?= $baseUrl . '/' . htmlspecialchars($canonical) ?>">
-  <meta property="og:image" content="<?= $baseUrl ?>/img/village/ville-de-gagnieres.jpg">
+  <meta property="og:image" content="<?= $baseUrl ?>/assets/img/village/ville-de-gagnieres.jpg">
   <meta name="twitter:card" content="summary_large_image">
 
   <!-- ---------- Icône du site ---------- -->
@@ -79,7 +78,7 @@ function navClass(string $key, string $active, string $base = ''): string {
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- ---------- Feuille de styles ---------- -->
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css<?= asset_ver(__DIR__ . '/../assets/css/style.css') ?>">
 
   <!-- ---------- Données structurées (fiche mairie pour Google) ---------- -->
   <script type="application/ld+json">
@@ -90,7 +89,7 @@ function navClass(string $key, string $active, string $base = ''): string {
     "url": "<?= $baseUrl ?>",
     "telephone": "<?= telHref($mairie['tel']) ?>",
     "email": "<?= $mairie['email'] ?>",
-    "image": "<?= $baseUrl ?>/img/village/mairie.jpg",
+    "image": "<?= $baseUrl ?>/assets/img/village/mairie.jpg",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "<?= $mairie['adresse'] ?>",
@@ -139,7 +138,7 @@ function navClass(string $key, string $active, string $base = ''): string {
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="index.php">
-        <img class="brand-logo" src="img/logo.png" alt="" width="240" height="192" aria-hidden="true">
+        <img class="brand-logo" src="assets/img/logo.png" alt="" width="240" height="192" aria-hidden="true">
         <span class="brand-text">
           <span class="brand-name">Gagnières</span>
           <span class="brand-sub">Mairie · Gard</span>
@@ -196,7 +195,7 @@ function navClass(string $key, string $active, string $base = ''): string {
     <div class="container footer-main">
       <div>
         <div class="footer-brand">
-          <img class="brand-logo" src="img/logo.png" alt="" width="240" height="192">
+          <img class="brand-logo" src="assets/img/logo.png" alt="" width="240" height="192">
           <span class="brand-name"><?= $mairie['nom'] ?></span>
         </div>
         <p><?= $mairie['adresse'] ?><br><?= $mairie['code_postal'] ?> <?= $mairie['ville'] ?></p>
@@ -252,12 +251,7 @@ function navClass(string $key, string $active, string $base = ''): string {
     <img src="" alt="" id="lightbox-img">
   </div>
 
-  <!-- ============================== Scripts ==============================
-       annonces.js n'est chargé que si la page l'a demandé ($includeAnnonces),
-       c'est-à-dire uniquement la page d'accueil (bloc « Flash info »). -->
-<?php if ($includeAnnonces): ?>
-  <script src="assets/js/annonces.js"></script>
-<?php endif; ?>
-  <script src="assets/js/main.js"></script>
+  <!-- ============================== Scripts ============================== -->
+  <script src="assets/js/main.js<?= asset_ver(__DIR__ . '/../assets/js/main.js') ?>"></script>
 </body>
 </html>

@@ -25,7 +25,7 @@ $canonical   = 'associations.php';
 $pageTitle   = 'Les associations';
 $pageLead    = 'Culture, mémoire, théâtre, solidarité : la vie associative fait battre le cœur du village.';
 $crumbs      = [['label' => 'Accueil', 'url' => 'index.php'], ['label' => 'Associations']];
-require_once __DIR__ . '/partials/icons.php';
+require_once __DIR__ . '/../partials/icons.php';
 
 if (!function_exists('telHref')) {
     /* Transforme "06 21 94 58 88" en "+33621945888" pour les liens tel: */
@@ -116,7 +116,7 @@ ob_start();
             </ul>
 <?php endif; ?>
 <?php if (!empty($a['image'])): ?>
-            <a class="pro-doc js-lightbox" href="img/asso/<?= $a['image'] ?>" data-alt="<?= htmlspecialchars($a['name']) ?>" target="_blank" rel="noopener">Voir l'image</a>
+            <a class="pro-doc js-lightbox" href="assets/img/asso/<?= $a['image'] ?>" data-alt="<?= htmlspecialchars($a['name']) ?>" target="_blank" rel="noopener">Voir l'image</a>
 <?php endif; ?>
 <?php if (!empty($a['website']) || !empty($a['facebook']) || !empty($a['instagram'])): ?>
             <div class="pro-links">
@@ -144,4 +144,4 @@ ob_start();
       </div>
     </section>
 
-<?php $content = ob_get_clean(); include 'partials/layout.php'; ?>
+<?php $content = ob_get_clean(); include __DIR__ . '/../partials/layout.php'; ?>

@@ -39,3 +39,19 @@ $mairie = [
         'Vendredi' => '8h–12h',
     ],
 ];
+
+/* -----------------------------------------------------------------------------
+ * ESPACE D'ADMINISTRATION (/admin) — publication des annonces « Flash info »
+ * -----------------------------------------------------------------------------
+ * Accès protégé par un mot de passe unique, partagé par le secrétariat.
+ * Seule l'EMPREINTE (hash) du mot de passe est stockée ici, jamais le mot de
+ * passe en clair. Pour définir un NOUVEAU mot de passe, exécuter en local :
+ *
+ *     php -r "echo password_hash('le-nouveau-mot-de-passe', PASSWORD_DEFAULT);"
+ *
+ * puis coller le résultat ci-dessous (entre les apostrophes).
+ *
+ * ⚠ Mot de passe temporaire actuel : « gagnieres2026 » — À CHANGER avant la
+ *   mise en ligne.
+ * ------------------------------------------------------------------------- */
+$adminMotDePasseHash = '$2y$12$3lqodJTNJmXs9z4kOSdGi.aFhByGnYI7QDHW8SgAMhsdQb4hj6GrG';

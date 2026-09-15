@@ -45,74 +45,13 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // (Le formulaire de contact est traité côté serveur par contact.php.)
+  // (Le « Flash info » est rendu côté serveur par pages/index.php depuis
+  //  data/annonces.json — voir l'espace d'administration /admin.)
 
   // Année courante dans le pied de page
   document.querySelectorAll('.js-year').forEach(function (el) {
     el.textContent = new Date().getFullYear();
   });
-
-  // Flash info : affiche les annonces de assets/js/annonces.js dont la date
-  // n'est pas passée. Le bloc disparaît s'il n'y a plus rien à afficher.
-  var flashSection = document.getElementById('flash-info');
-  var flashList = document.getElementById('flash-list');
-  if (flashSection && flashList && typeof ANNONCES !== 'undefined') {
-    var today = new Date();
-    today.setHours(0, 0, 0, 0);
-
-    var actives = ANNONCES.filter(function (a) {
-      if (!a || !a.date) { return false; }
-      var parts = a.date.split('-');
-      var limite = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
-      return limite >= today;
-    });
-
-    if (actives.length > 0) {
-      actives.forEach(function (a) {
-        var card = document.createElement('article');
-        card.className = 'flash-card';
-
-        var body = document.createElement('div');
-        body.className = 'flash-body';
-
-        if (a.quand) {
-          var quand = document.createElement('p');
-          quand.className = 'flash-quand';
-          quand.textContent = a.quand;
-          body.appendChild(quand);
-        }
-
-        var titre = document.createElement('h3');
-        titre.textContent = a.titre || '';
-        body.appendChild(titre);
-
-        if (a.texte) {
-          var texte = document.createElement('p');
-          texte.className = 'flash-texte';
-          texte.textContent = a.texte;
-          body.appendChild(texte);
-        }
-
-        if (a.affiche) {
-          var lien = document.createElement('a');
-          lien.className = 'flash-affiche';
-          lien.href = a.affiche;
-          lien.target = '_blank';
-          lien.rel = 'noopener';
-          lien.setAttribute('aria-label', 'Voir l’affiche : ' + (a.titre || ''));
-          var img = document.createElement('img');
-          img.src = a.affiche;
-          img.alt = 'Affiche : ' + (a.titre || '');
-          img.loading = 'lazy';
-          lien.appendChild(img);
-          card.appendChild(lien);
-        }
-
-        card.appendChild(body);
-        flashList.appendChild(card);
-      });
-      flashSection.hidden = false;
-    }
-  }
 
   // Lightbox « Voir l'image » : ouvre l'image dans une fenêtre modale.
   var lightbox = document.getElementById('lightbox');
@@ -149,4 +88,30 @@ document.addEventListener('DOMContentLoaded', function () {
       if (e.key === 'Escape' && lightbox.classList.contains('open')) { closeLightbox(); }
     });
   }
+
+  // Carrousel d'actualités : cartes portrait côte à côte, défilement horizontal.
+  // Les flèches n'apparaissent que si le contenu déborde, et se désactivent aux
+  // extrémités.
+  document.querySelectorAll('[data-carousel]').forEach(function (carousel) {
+    var track = carousel.querySelector('.carousel-track');
+    if (!track) { return; }
+    var prev = carousel.querySelector('.carousel-prev');
+    var next = carousel.querySelector('.carousel-next');
+
+    var pas = function () {
+      var slide = track.querySelector('.carousel-slide');
+      return slide ? slide.getBoundingClientRect().width + 20 : track.clientWidth * 0.8;
+    };
+    if (prev) { prev.addEventListener('click', function () { track.scrollBy({ left: -pas(), behavior: 'smooth' }); }); }
+    if (next) { next.addEventListener('click', function () { track.scrollBy({ left: pas(), behavior: 'smooth' }); }); }
+
+    var majEtat = function () {
+      var max = track.scrollWidth - track.clientWidth - 2;
+      if (prev) { prev.disabled = track.scrollLeft <= 0; }
+      if (next) { next.disabled = track.scrollLeft >= max; }
+    };
+    track.addEventListener('scroll', majEtat);
+    window.addEventListener('resize', majEtat);
+    majEtat();
+  });
 });

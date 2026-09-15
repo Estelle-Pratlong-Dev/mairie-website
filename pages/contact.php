@@ -9,7 +9,7 @@ $canonical   = 'contact.php';
 $pageTitle   = 'Contacter la mairie';
 $pageLead    = 'Vous désirez nous poser une question, nous signaler un problème technique dans la commune ou nous contacter pour toute autre raison : n\'hésitez pas !';
 $crumbs      = [['label' => 'Accueil', 'url' => 'index.php'], ['label' => 'Contact']];
-require_once __DIR__ . '/partials/icons.php';
+require_once __DIR__ . '/../partials/icons.php';
 
 /* =============================================================================
  * TRAITEMENT DU FORMULAIRE DE CONTACT (envoi serveur)
@@ -184,4 +184,4 @@ ob_start();
       </div>
     </section>
 
-<?php $content = ob_get_clean(); include 'partials/layout.php'; ?>
+<?php $content = ob_get_clean(); include __DIR__ . '/../partials/layout.php'; ?>

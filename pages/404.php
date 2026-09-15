@@ -11,7 +11,7 @@ $canonical   = '404.php';
 $pageTitle   = 'Oups, cette page n\'existe pas';
 $pageLead    = 'La page que vous cherchez a peut-être été déplacée ou supprimée.';
 $crumbs      = [['label' => 'Accueil', 'url' => 'index.php'], ['label' => 'Page introuvable']];
-require_once __DIR__ . '/partials/icons.php';
+require_once __DIR__ . '/../partials/icons.php';
 ob_start();
 ?>
 
@@ -26,4 +26,4 @@ ob_start();
       </div>
     </section>
 
-<?php $content = ob_get_clean(); include 'partials/layout.php'; ?>
+<?php $content = ob_get_clean(); include __DIR__ . '/../partials/layout.php'; ?>

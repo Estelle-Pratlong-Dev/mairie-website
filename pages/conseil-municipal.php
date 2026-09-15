@@ -9,7 +9,7 @@ $canonical   = 'conseil-municipal.php';
 $pageTitle   = 'Le Conseil municipal';
 $pageLead    = 'Quinze élus au service de la commune et de ses habitants.';
 $crumbs      = [['label' => 'Accueil', 'url' => 'index.php'], ['label' => 'La Mairie'], ['label' => 'Le Conseil municipal']];
-require_once __DIR__ . '/partials/icons.php';
+require_once __DIR__ . '/../partials/icons.php';
 ob_start();
 ?>
 
@@ -161,4 +161,4 @@ ob_start();
       </div>
     </section>
 
-<?php $content = ob_get_clean(); include 'partials/layout.php'; ?>
+<?php $content = ob_get_clean(); include __DIR__ . '/../partials/layout.php'; ?>

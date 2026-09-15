@@ -1,7 +1,7 @@
 # Configuration locale de l'aperçu (outil de développement, pas le site)
 
 # Artefacts d'enregistrement de page web
-img/mairie.htm
+assets/img/mairie.htm
 *_files/
 
 # Système
