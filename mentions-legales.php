@@ -17,14 +17,14 @@ ob_start();
       <div class="container">
         <div class="prose">
           <h2>Éditeur du site</h2>
-          <p>Commune de Gagnières<br>
-          Place de la Mairie, 30160 Gagnières<br>
-          SIRET : 213 001 209 00013<br>
-          Téléphone : 04 66 25 02 02<br>
-          E-mail : mairie.gagnieres@laposte.net</p>
+          <p><?= $mairie['commune'] ?><br>
+          <?= $mairie['adresse'] ?>, <?= $mairie['code_postal'] ?> <?= $mairie['ville'] ?><br>
+          SIRET : <?= $mairie['siret'] ?><br>
+          Téléphone : <?= $mairie['tel'] ?><br>
+          E-mail : <?= $mairie['email'] ?></p>
 
           <h2>Directeur de la publication</h2>
-          <p>Monsieur Bernard Durand, Maire de Gagnières.</p>
+          <p>Monsieur <?= $mairie['maire'] ?>, Maire de Gagnières.</p>
 
           <h2>Hébergement</h2>
           <p>Ce site est hébergé par Amen — Agence des Médias Numériques (SASU)<br>

@@ -31,10 +31,11 @@ $pageTitle       = $pageTitle       ?? '';   // titre du bandeau interne (H1) �
 $pageLead        = $pageLead        ?? '';   // sous-titre facultatif du bandeau
 $crumbs          = $crumbs          ?? [];   // fil d'Ariane, voir breadcrumb()
 
-/* Réglages globaux (adresse du site…) : centralisés dans config.php */
-require __DIR__ . '/../config.php';
+/* Réglages globaux (adresse du site, coordonnées mairie) : voir config.php */
+require_once __DIR__ . '/../config.php';
 require_once __DIR__ . '/icons.php';
-$baseUrl = $baseUrl ?? 'https://www.mairie-gagnieres.fr'; // sécurité si config absente
+$baseUrl = $baseUrl ?? 'https://mairie-gagnieres.fr'; // sécurité si config absente
+$mairie  = $mairie  ?? [];                              // sécurité si config absente
 
 /* Aide : attribut class (+ aria-current) d'un lien de menu, avec "active"
    quand on se trouve sur la page correspondante. */
@@ -85,20 +86,20 @@ function navClass(string $key, string $active, string $base = ''): string {
   {
     "@context": "https://schema.org",
     "@type": "GovernmentOffice",
-    "name": "Mairie de Gagnières",
+    "name": "<?= $mairie['nom'] ?>",
     "url": "<?= $baseUrl ?>",
-    "telephone": "+33466250202",
-    "email": "mairie.gagnieres@laposte.net",
+    "telephone": "<?= telHref($mairie['tel']) ?>",
+    "email": "<?= $mairie['email'] ?>",
     "image": "<?= $baseUrl ?>/img/village/mairie.jpg",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Place de la Mairie",
-      "postalCode": "30160",
-      "addressLocality": "Gagnières",
+      "streetAddress": "<?= $mairie['adresse'] ?>",
+      "postalCode": "<?= $mairie['code_postal'] ?>",
+      "addressLocality": "<?= $mairie['ville'] ?>",
       "addressRegion": "Gard",
       "addressCountry": "FR"
     },
-    "geo": { "@type": "GeoCoordinates", "latitude": 44.307526, "longitude": 4.129337 },
+    "geo": { "@type": "GeoCoordinates", "latitude": <?= $mairie['latitude'] ?>, "longitude": <?= $mairie['longitude'] ?> },
     "areaServed": "Gagnières",
     "openingHoursSpecification": [
       { "@type": "OpeningHoursSpecification", "dayOfWeek": "Monday",    "opens": "08:00", "closes": "12:00" },
@@ -119,17 +120,17 @@ function navClass(string $key, string $active, string $base = ''): string {
   <!-- ============================ Barre de contact ========================= -->
   <div class="topbar">
     <div class="container topbar-inner">
-      <a href="tel:+33466250202">
+      <a href="tel:<?= telHref($mairie['tel']) ?>">
         <?= icon('phone', 'icon') ?>
-        04 66 25 02 02
+        <?= $mairie['tel'] ?>
       </a>
-      <a href="mailto:mairie.gagnieres@laposte.net">
+      <a href="mailto:<?= $mairie['email'] ?>">
         <?= icon('mail', 'icon') ?>
-        mairie.gagnieres@laposte.net
+        <?= $mairie['email'] ?>
       </a>
       <a href="contact.php">
         <?= icon('map-pin', 'icon') ?>
-        Place de la Mairie, 30160 Gagnières
+        <?= $mairie['adresse'] ?>, <?= $mairie['code_postal'] ?> <?= $mairie['ville'] ?>
       </a>
     </div>
   </div>
@@ -196,25 +197,23 @@ function navClass(string $key, string $active, string $base = ''): string {
       <div>
         <div class="footer-brand">
           <img class="brand-logo" src="img/logo.png" alt="" width="240" height="192">
-          <span class="brand-name">Mairie de Gagnières</span>
+          <span class="brand-name"><?= $mairie['nom'] ?></span>
         </div>
-        <p>Place de la Mairie<br>30160 Gagnières</p>
+        <p><?= $mairie['adresse'] ?><br><?= $mairie['code_postal'] ?> <?= $mairie['ville'] ?></p>
         <ul>
-          <li><a href="tel:+33466250202">04 66 25 02 02</a></li>
-          <li>Urgences mairie : <a href="tel:+33658242030">06 58 24 20 30</a></li>
-          <li><a href="mailto:mairie.gagnieres@laposte.net">mairie.gagnieres@laposte.net</a></li>
-          <li><a href="https://www.facebook.com/MairieGagnieres" target="_blank" rel="noopener">Facebook — page de la mairie</a></li>
-          <li><a href="https://www.facebook.com/groups/509135176230743" target="_blank" rel="noopener">Facebook — groupe du village</a></li>
+          <li><a href="tel:<?= telHref($mairie['tel']) ?>"><?= $mairie['tel'] ?></a></li>
+          <li>Urgences mairie : <a href="tel:<?= telHref($mairie['tel_urgence']) ?>"><?= $mairie['tel_urgence'] ?></a></li>
+          <li><a href="mailto:<?= $mairie['email'] ?>"><?= $mairie['email'] ?></a></li>
+          <li><a href="<?= $mairie['facebook'] ?>" target="_blank" rel="noopener">Facebook — page de la mairie</a></li>
+          <li><a href="<?= $mairie['facebook_groupe'] ?>" target="_blank" rel="noopener">Facebook — groupe du village</a></li>
         </ul>
       </div>
       <div>
         <h3>Horaires d'ouverture</h3>
         <dl class="footer-hours">
-          <div><dt>Lundi</dt><dd>8h–12h · 13h30–17h30</dd></div>
-          <div><dt>Mardi</dt><dd>8h–12h</dd></div>
-          <div><dt>Mercredi</dt><dd>9h–12h · 13h30–17h30</dd></div>
-          <div><dt>Jeudi</dt><dd>8h–12h</dd></div>
-          <div><dt>Vendredi</dt><dd>8h–12h</dd></div>
+<?php foreach ($mairie['horaires'] as $jour => $plage): ?>
+          <div><dt><?= $jour ?></dt><dd><?= $plage ?></dd></div>
+<?php endforeach; ?>
         </dl>
       </div>
       <div>
@@ -230,9 +229,9 @@ function navClass(string $key, string $active, string $base = ''): string {
       <div>
         <h3>Démarches</h3>
         <ul>
-          <li><a href="https://www.service-public.fr/" target="_blank" rel="noopener">Service-Public.fr</a></li>
-          <li><a href="https://www.service-public.fr/particuliers/vosdroits/N359" target="_blank" rel="noopener">Actes d'état civil</a></li>
-          <li><a href="https://www.service-public.fr/particuliers/vosdroits/R16396" target="_blank" rel="noopener">Inscription électorale</a></li>
+          <li><a href="https://www.service-public.gouv.fr/" target="_blank" rel="noopener">Service-Public.fr</a></li>
+          <li><a href="https://www.service-public.gouv.fr/particuliers/vosdroits/N359" target="_blank" rel="noopener">Actes d'état civil</a></li>
+          <li><a href="https://www.service-public.gouv.fr/particuliers/vosdroits/R16396" target="_blank" rel="noopener">Inscription électorale</a></li>
           <li><a href="services.php#urbanisme">Urbanisme</a></li>
           <li><a href="contact.php">Contact</a></li>
         </ul>

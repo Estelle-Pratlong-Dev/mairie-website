@@ -77,8 +77,8 @@ ob_start();
             <h3>Suivez l'actualité au quotidien</h3>
             <p>L'actualité de la commune se vit aussi sur Facebook : annonces de la mairie, alertes, photos et vie du village.</p>
             <ul class="info-list">
-              <li><?= icon('arrow-right', 'icon') ?> <a href="https://www.facebook.com/MairieGagnieres" target="_blank" rel="noopener">Page officielle de la mairie</a></li>
-              <li><?= icon('arrow-right', 'icon') ?> <a href="https://www.facebook.com/groups/509135176230743" target="_blank" rel="noopener">Groupe des habitants du village</a></li>
+              <li><?= icon('arrow-right', 'icon') ?> <a href="<?= $mairie['facebook'] ?>" target="_blank" rel="noopener">Page officielle de la mairie</a></li>
+              <li><?= icon('arrow-right', 'icon') ?> <a href="<?= $mairie['facebook_groupe'] ?>" target="_blank" rel="noopener">Groupe des habitants du village</a></li>
             </ul>
           </div>
         </div>
@@ -165,7 +165,7 @@ ob_start();
           <a class="card accent" href="contact.php">
             <span class="icon-badge" aria-hidden="true"><?= icon('alert') ?></span>
             <h3>Demande d'intervention</h3>
-            <p>Signalez un problème technique dans la commune. Urgences : 06 58 24 20 30.</p>
+            <p>Signalez un problème technique dans la commune. Urgences : <?= $mairie['tel_urgence'] ?>.</p>
             <span class="card-link">Nous signaler <?= icon('arrow-right', 'icon') ?></span>
           </a>
         </div>

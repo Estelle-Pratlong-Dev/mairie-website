@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /partials/
 
-Sitemap: https://www.mairie-gagnieres.fr/sitemap.php
+Sitemap: https://mairie-gagnieres.fr/sitemap.php

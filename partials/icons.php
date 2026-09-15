@@ -12,6 +12,17 @@
  * (Jeu d'icônes : Lucide — https://lucide.dev, style trait fin 24×24.)
  * ========================================================================== */
 
+/* Configuration + coordonnées de la mairie, disponibles dans toutes les pages
+   (chaque page charge icons.php avant d'afficher son contenu). */
+require_once __DIR__ . '/../config.php';
+
+if (!function_exists('telHref')) {
+    /* Transforme "06 21 94 58 88" en "+33621945888" pour les liens tel: */
+    function telHref(string $num): string {
+        return '+33' . substr(preg_replace('/\D/', '', $num), 1);
+    }
+}
+
 /* Nom => tracé interne du SVG (sans la balise <svg> qui est ajoutée par icon()). */
 function icon_paths(): array {
     return [
@@ -34,6 +45,7 @@ function icon_paths(): array {
         'target'       => '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>',
         'image'        => '<rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>',
         'home'         => '<path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>',
+        'check-circle' => '<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>',
         'coin'         => '<circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><line x1="12" y1="6" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="18"/>',
         'megaphone'    => '<path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/>',
         'file-text'    => '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>',

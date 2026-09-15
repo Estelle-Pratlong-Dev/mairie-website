@@ -19,7 +19,7 @@ ob_start();
         <div class="prose">
 
           <h2>Responsable du traitement</h2>
-          <p>Le responsable du traitement des données personnelles collectées sur ce site est la commune de Gagnières (Place de la Mairie, 30160 Gagnières). Conformément au Règlement général sur la protection des données (RGPD) et à la loi n° 78-17 du 6 janvier 1978 « Informatique et Libertés », la commune a désigné un Délégué à la Protection des Données (DPO) et tient un registre de ses traitements.</p>
+          <p>Le responsable du traitement des données personnelles collectées sur ce site est la <?= $mairie['commune'] ?> (<?= $mairie['adresse'] ?>, <?= $mairie['code_postal'] ?> <?= $mairie['ville'] ?>). Conformément au Règlement général sur la protection des données (RGPD) et à la loi n° 78-17 du 6 janvier 1978 « Informatique et Libertés », la commune a désigné un Délégué à la Protection des Données (DPO) et tient un registre de ses traitements.</p>
 
           <h2>Données collectées et finalité</h2>
           <p>Les seules données personnelles traitées sont celles que vous transmettez volontairement via le formulaire de contact : votre nom, votre adresse e-mail et le contenu de votre message. Elles servent uniquement à recevoir votre demande et à y répondre.</p>
@@ -42,8 +42,8 @@ ob_start();
           <h2>Exercer vos droits</h2>
           <p>Pour exercer ces droits, contactez la mairie :</p>
           <ul>
-            <li>par e-mail : <a href="mailto:mairie.gagnieres@laposte.net">mairie.gagnieres@laposte.net</a> ;</li>
-            <li>par courrier : Délégué à la Protection des Données — Mairie de Gagnières, Place de la Mairie, 30160 Gagnières.</li>
+            <li>par e-mail : <a href="mailto:<?= $mairie['email'] ?>"><?= $mairie['email'] ?></a> ;</li>
+            <li>par courrier : Délégué à la Protection des Données — <?= $mairie['nom'] ?>, <?= $mairie['adresse'] ?>, <?= $mairie['code_postal'] ?> <?= $mairie['ville'] ?>.</li>
           </ul>
           <p>Une preuve d'identité pourra vous être demandée, et une réponse vous sera apportée dans les meilleurs délais.</p>
 
