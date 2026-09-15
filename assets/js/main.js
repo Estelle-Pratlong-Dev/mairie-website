@@ -44,22 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // Formulaire de contact : ouvre le logiciel de messagerie avec le message pré-rempli.
-  // (À remplacer par un véritable envoi serveur une fois l'hébergement choisi.)
-  var form = document.getElementById('contact-form');
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var nom = document.getElementById('cf-nom').value.trim();
-      var email = document.getElementById('cf-email').value.trim();
-      var sujet = document.getElementById('cf-sujet').value.trim() || 'Message depuis le site de la mairie';
-      var message = document.getElementById('cf-message').value.trim();
-      var corps = message + '\n\n—\n' + nom + '\n' + email;
-      window.location.href = 'mailto:mairie.gagnieres@laposte.net' +
-        '?subject=' + encodeURIComponent(sujet) +
-        '&body=' + encodeURIComponent(corps);
-    });
-  }
+  // (Le formulaire de contact est traité côté serveur par contact.php.)
 
   // Année courante dans le pied de page
   document.querySelectorAll('.js-year').forEach(function (el) {

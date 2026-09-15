@@ -77,7 +77,7 @@ ob_start();
         <div class="cta-band">
           <div>
             <h2>Joindre les services</h2>
-            <p>Un seul numéro : 04 66 25 02 02, du lundi au vendredi aux horaires d'ouverture.</p>
+            <p>Un seul numéro : <?= $mairie['tel'] ?>, du lundi au vendredi aux horaires d'ouverture.</p>
           </div>
           <a class="btn btn-primary" href="contact.php">Nous contacter</a>
         </div>

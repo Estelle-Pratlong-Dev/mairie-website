@@ -165,7 +165,7 @@ ob_start();
             <h3>Pôle actions sociales</h3>
             <p>Actions en direction du 3<sup>e</sup> âge et accompagnement social. Permanence le mercredi matin de 10h à 12h en mairie.</p>
             <ul class="info-list">
-              <li><?= icon('phone', 'icon') ?> <a href="tel:+33466250202">04 66 25 02 02</a></li>
+              <li><?= icon('phone', 'icon') ?> <a href="tel:<?= telHref($mairie['tel']) ?>"><?= $mairie['tel'] ?></a></li>
             </ul>
           </div>
           <div class="card" id="portage-medicaments">
@@ -174,7 +174,7 @@ ob_start();
             <p>Un service de la commune pour faire livrer vos médicaments à domicile. Renseignements auprès de la mairie.</p>
             <ul class="info-list">
               <li><?= icon('clock', 'icon') ?> Lundi, mercredi et vendredi</li>
-              <li><?= icon('phone', 'icon') ?> N° d'appel : <a href="tel:+33466250202">04 66 25 02 02</a></li>
+              <li><?= icon('phone', 'icon') ?> N° d'appel : <a href="tel:<?= telHref($mairie['tel']) ?>"><?= $mairie['tel'] ?></a></li>
             </ul>
           </div>
           <div class="card" id="service-public">
@@ -233,7 +233,7 @@ ob_start();
             <p>Le service urbanisme accompagne particuliers et professionnels dans leurs projets de travaux : permis de construire, déclarations préalables, certificats d'urbanisme, permis d'aménager. Il précise le cadre réglementaire applicable aux différents secteurs de la commune.</p>
             <ul class="info-list">
               <li><?= icon('file', 'icon') ?> Plan Local d'Urbanisme (PLU) : règlement et cartes consultables en mairie</li>
-              <li><?= icon('phone', 'icon') ?> <a href="tel:+33466250202">04 66 25 02 02</a> · <a href="mailto:mairie.gagnieres@laposte.net">mairie.gagnieres@laposte.net</a></li>
+              <li><?= icon('phone', 'icon') ?> <a href="tel:<?= telHref($mairie['tel']) ?>"><?= $mairie['tel'] ?></a> · <a href="mailto:<?= $mairie['email'] ?>"><?= $mairie['email'] ?></a></li>
             </ul>
           </div>
         </div>
@@ -294,7 +294,7 @@ ob_start();
             <h3>Office du Tourisme du Mont Lozère</h3>
             <p>Découvrez le Mont Lozère et les Cévennes : activités de pleine nature, villages et grands espaces.</p>
             <ul class="info-list">
-              <li><?= icon('phone', 'icon') ?> Renseignements en mairie : <a href="tel:+33466250202">04 66 25 02 02</a></li>
+              <li><?= icon('phone', 'icon') ?> Renseignements en mairie : <a href="tel:<?= telHref($mairie['tel']) ?>"><?= $mairie['tel'] ?></a></li>
             </ul>
           </div>
         </div>

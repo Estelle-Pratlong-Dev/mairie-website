@@ -1,92 +1,113 @@
 # Site de la Mairie de Gagnières
 
-Refonte moderne du site https://mairie-gagnieres.fr/ — mêmes contenus, présentation actualisée.
-Site en **PHP** (pages assemblées à partir d'un gabarit unique), hébergeable sur tout
-hébergement mutualisé classique (OVH, Ionos, o2switch…).
+Site officiel de la commune de **Gagnières** (Gard). Refonte complète et modernisée
+de l'ancien site, à contenus équivalents mais réorganisés et actualisés.
+
+Le site est **validé** ; il remplacera l'ancien dès la récupération du nom de domaine
+et des accès d'hébergement.
+
+- **Langage** : PHP « vanilla » (pages assemblées par un gabarit unique), sans framework
+  ni étape de build.
+- **Dépendances** : aucune. Seules les polices Google Fonts sont chargées à distance.
+- **Hébergement** : tout hébergement mutualisé avec PHP (le site cible **Amen**, l'hébergeur
+  actuel de la commune).
 
 ## Voir le site en local
 
-Démarrez Laragon puis ouvrez **http://mairie-website.test**.
-(PHP est nécessaire — un simple double-clic sur les fichiers ne suffit pas.)
+Démarrez Laragon puis ouvrez **http://mairie-website.test** (PHP est nécessaire — un simple
+double-clic sur un fichier ne suffit pas).
 
-## Architecture (important)
+## Fonctionnalités
 
-Le site utilise le principe du **gabarit unique**, comme le `base.html.twig` de Symfony :
+- **Gabarit unique** : en-tête, menu, pied de page et `<head>` (SEO) définis à un seul endroit.
+- **Annuaires** professionnels et associations pilotés par des **tableaux de données** (ajouter
+  une fiche = ajouter quelques lignes, sans recopier de HTML).
+- **Flash info** : annonces d'accueil à **expiration automatique** par date.
+- **Fenêtre modale** (« Voir l'image ») pour agrandir logos, cartes de visite et photos.
+- **Référencement** complet (voir plus bas) et pages **légales / RGPD** conformes.
+- **Responsive** (mobile, tablette) et **accessible** (navigation clavier, contrastes,
+  fil d'Ariane sémantique, `alt` sur les images).
 
-- **`partials/layout.php`** contient tout ce qui ne change pas d'une page à l'autre :
-  `<head>` (SEO), barre de contact, menu, pied de page, scripts. **Toutes les balises
-  s'ouvrent et se ferment dans ce seul fichier.**
-- **Chaque page** (`index.php`, `services.php`, …) ne contient que **son propre contenu**.
-  Elle le prépare puis appelle le gabarit :
+## Architecture
+
+Principe du **gabarit unique**, comme le `base.html.twig` de Symfony :
+
+- **`partials/layout.php`** contient tout ce qui ne change pas d'une page à l'autre
+  (`<head>`, barre de contact, menu, pied de page, scripts). Toutes les balises de structure
+  s'y ouvrent **et** s'y ferment.
+- **Chaque page** ne fournit que son contenu et quelques variables :
 
   ```php
   <?php
   $title = '…'; $description = '…'; $active = '…'; $canonical = 'services.php';
-  ob_start();               // on capture le contenu de la page
+  $pageTitle = 'Vie pratique';           // titre du bandeau interne
+  $pageLead  = '…';                      // sous-titre (facultatif)
+  $crumbs    = [['label' => 'Accueil', 'url' => 'index.php'], ['label' => 'Vie pratique']];
+  ob_start();
   ?>
      … sections de la page …
-  <?php
-  $content = ob_get_clean(); // le contenu part dans $content
-  include 'partials/layout.php';
+  <?php $content = ob_get_clean(); include 'partials/layout.php'; ?>
   ```
 
-Pour modifier le menu, le pied de page ou le `<head>` : **un seul endroit**, `partials/layout.php`.
+- Les **icônes** sont centralisées dans `partials/icons.php` : `<?= icon('phone') ?>`.
+- Le **fil d'Ariane** est généré par `breadcrumb()` (voir `partials/icons.php`).
 
-Les **icônes** (téléphone, adresse…) sont centralisées dans `partials/icons.php` et s'utilisent
-par leur nom : `<?= icon('phone') ?>`. Ainsi le tracé de chaque icône n'existe qu'une seule fois.
+## Structure des fichiers
 
-Le **bandeau de titre** des pages internes (fil d'Ariane + titre + sous-titre) est lui aussi
-généré par le gabarit. Chaque page fournit seulement ses données :
-
-```php
-$pageTitle = 'Les professionnels';
-$pageLead  = 'Commerçants, artisans et entreprises…';   // facultatif
-$crumbs    = [['label' => 'Accueil', 'url' => 'index.php'], ['label' => 'Les professionnels']];
-```
-
-## Les pages
-
-| Fichier | Page |
+| Fichier / dossier | Rôle |
 |---|---|
-| `index.php` | Accueil (Flash info, démarches, actualités, galerie) |
-| `mot-du-maire.php` | Le mot du Maire |
-| `conseil-municipal.php` | Le Conseil municipal |
-| `services-municipaux.php` | Les équipes municipales |
+| `index.php` | Accueil (Flash info, actualités, présentation, démarches, galerie) |
+| `mot-du-maire.php` · `conseil-municipal.php` · `services-municipaux.php` | La Mairie |
 | `services.php` | Vie pratique (école, santé, déchets, transports…) |
-| `professionnels.php` | Annuaire des commerçants et artisans |
-| `associations.php` | Les associations |
+| `professionnels.php` · `associations.php` | Annuaires (tableaux de données en tête de fichier) |
 | `contact.php` | Contact, horaires, plan d'accès |
-| `mentions-legales.php` | Mentions légales et RGPD |
+| `mentions-legales.php` · `confidentialite.php` | Pages légales et RGPD |
 | `404.php` | Page d'erreur « introuvable » |
-| `partials/layout.php` | Gabarit commun (menu, pied de page, SEO) |
-| `partials/icons.php` | Catalogue des icônes SVG — appelées par `icon('nom')` |
-| `config.php` | Réglages du site (adresse/domaine) — **à éditer à la mise en ligne** |
+| `config.php` | **Domaine + toutes les coordonnées de la mairie** (tél, adresse, e-mail, horaires, réseaux…) — un seul endroit à tenir à jour |
+| `partials/layout.php` | Gabarit commun (menu, pied de page, SEO, modale) |
+| `partials/icons.php` | Catalogue d'icônes SVG + fil d'Ariane |
 | `assets/css/style.css` | Mise en forme (couleurs en haut du fichier) |
-| `assets/js/main.js` | Menu mobile, formulaire, Flash info |
-| `assets/js/annonces.js` | **Contenu des annonces Flash info** (voir ci-dessous) |
+| `assets/js/main.js` | Menu mobile, formulaire, Flash info, modale |
+| `assets/js/annonces.js` | **Contenu des annonces Flash info** |
+| `img/village/` · `img/pro/` · `img/asso/` · `img/event/` | Photos et affiches |
+| `sitemap.php` · `robots.txt` · `.htaccess` · `favicon.svg` | Référencement / config serveur |
 
-## Flash info (annonces à expiration automatique)
+## Gérer le contenu au quotidien
 
-Les annonces de la page d'accueil se gèrent dans **`assets/js/annonces.js`** : chaque annonce
-a une **date de fin** (format AAAA-MM-JJ). Le lendemain, elle disparaît toute seule ; quand il
-n'y a plus d'annonce, le bloc entier disparaît. Le mode d'emploi est en tête du fichier.
-Les affiches se déposent dans `img/event/`.
+- **Annonces (Flash info)** : `assets/js/annonces.js`. Chaque annonce a une **date de fin**
+  (AAAA-MM-JJ) ; passée cette date, elle disparaît d'elle-même. Affiches dans `img/event/`.
+- **Professionnels / Associations** : modifier le tableau en tête de `professionnels.php` /
+  `associations.php` (nom, coordonnées, liens, image). Images dans `img/pro/` et `img/asso/`.
+- **Couleurs** : variables en haut de `assets/css/style.css` (`--slate-*`, `--blue-*`).
+- **Coordonnées de la mairie** (téléphone, adresse, e-mail, horaires, nom du maire, réseaux) :
+  le tableau `$mairie` dans **`config.php`**. Modifié ici, c'est répercuté sur **tout le site**
+  (barre de contact, pied de page, page contact, mentions légales, données Google…).
 
-## Référencement (SEO) — déjà en place
+## Référencement (SEO)
 
-- Titre + description uniques par page, URL canonique, Open Graph (partage réseaux sociaux)
-- Données structurées JSON-LD (fiche mairie pour Google), favicon, `theme-color`
-- `robots.txt`, `sitemap.php` (généré depuis `config.php`), page `404.php`, `.htaccess` (compression, cache, UTF-8)
+Titre + description uniques par page, URL canoniques, Open Graph, données structurées JSON-LD
+(fiche mairie), favicon, `theme-color`, `sitemap.php`, `robots.txt`, `.htaccess`
+(compression, cache, UTF-8, page 404).
 
-> **À faire le jour de la mise en ligne :** l'adresse du site est centralisée dans **`config.php`**
-> (`$baseUrl`) — un seul endroit à modifier pour tout le PHP (canonical, Open Graph, JSON-LD,
-> `sitemap.php`). Seul `robots.txt` (fichier statique) contient encore le domaine en clair,
-> à mettre à jour aussi.
+## Mise en ligne
 
-## À faire avant la mise en ligne
+1. **Récupérer** le nom de domaine et les accès d'hébergement (Amen).
+2. **Domaine** : déjà réglé sur `https://mairie-gagnieres.fr` (dans `config.php` → `$baseUrl`
+   et dans `robots.txt`). À vérifier seulement si l'adresse finale diffère (www ou non).
+3. **Téléverser** l'ensemble des fichiers à la racine de l'hébergement (le dossier `.claude/`
+   est ignoré par git et inutile en ligne).
+4. Vérifier que l'hébergement sert bien `index.php` par défaut et que `.htaccess` est actif.
 
-1. **Mot du Maire** : texte encore signé Olivier Martin — à faire actualiser/signer par le maire actuel.
-2. **Formulaire de contact** : ouvre le logiciel de messagerie (`mailto:`). Pour un envoi
-   serveur, prévoir un petit script PHP côté hébergeur.
-3. **Mentions légales** : compléter le nom de l'hébergeur.
-4. **Domaine** : mettre à jour `$baseUrl` (voir ci-dessus).
+### Points à finaliser avant la bascule
+
+- **Mot du Maire** : actualiser le texte (encore signé Olivier Martin) et le faire valider
+  par M. Bernard Durand.
+- **Formulaire de contact** : choisir entre le fonctionnement actuel (`mailto:`, ouvre le
+  logiciel de messagerie du visiteur) et un **envoi serveur** en PHP (message reçu directement).
+- **Adresse légale** : confirmer le siège officiel (14 rue du Village ou Place de la Mairie).
+- **Accessibilité** : réaliser l'audit RGAA et publier la déclaration d'accessibilité.
+- **Actualités** : penser à publier des actualités récentes.
+
+---
+
+Conception et réalisation : [Estelle Pratlong](https://estelle-pratlong.fr/) pour la commune de Gagnières.
