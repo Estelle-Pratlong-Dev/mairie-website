@@ -8,17 +8,12 @@ $title       = 'Page introuvable — Mairie de Gagnières';
 $description  = "La page demandée n'existe pas ou a été déplacée.";
 $robots      = 'noindex, nofollow';
 $canonical   = '404.php';
+$pageTitle   = 'Oups, cette page n\'existe pas';
+$pageLead    = 'La page que vous cherchez a peut-être été déplacée ou supprimée.';
+$crumbs      = [['label' => 'Accueil', 'url' => 'index.php'], ['label' => 'Page introuvable']];
 require_once __DIR__ . '/partials/icons.php';
 ob_start();
 ?>
-
-    <section class="page-hero">
-      <div class="container">
-        <p class="crumbs"><a href="index.php">Accueil</a> › Page introuvable</p>
-        <h1>Oups, cette page n'existe pas</h1>
-        <p class="lead">La page que vous cherchez a peut-être été déplacée ou supprimée.</p>
-      </div>
-    </section>
 
     <section class="section">
       <div class="container">

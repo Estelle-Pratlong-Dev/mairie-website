@@ -128,4 +128,40 @@ document.addEventListener('DOMContentLoaded', function () {
       flashSection.hidden = false;
     }
   }
+
+  // Lightbox « Voir l'image » : ouvre l'image dans une fenêtre modale.
+  var lightbox = document.getElementById('lightbox');
+  if (lightbox) {
+    var lightboxImg = document.getElementById('lightbox-img');
+    var lightboxClose = lightbox.querySelector('.lightbox-close');
+
+    var openLightbox = function (src, alt) {
+      lightboxImg.src = src;
+      lightboxImg.alt = alt || '';
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    };
+    var closeLightbox = function () {
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      lightboxImg.src = '';
+      document.body.style.overflow = '';
+    };
+
+    document.querySelectorAll('.js-lightbox').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        openLightbox(link.getAttribute('href'), link.getAttribute('data-alt'));
+      });
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === lightbox) { closeLightbox(); }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && lightbox.classList.contains('open')) { closeLightbox(); }
+    });
+  }
 });

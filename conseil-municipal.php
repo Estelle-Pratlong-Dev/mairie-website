@@ -6,18 +6,12 @@ $title       = 'Le Conseil municipal — Mairie de Gagnières';
 $description  = 'Composition du Conseil municipal de Gagnières : maire, adjoints, conseillers délégués et conseillers municipaux.';
 $active      = 'conseil';
 $canonical   = 'conseil-municipal.php';
+$pageTitle   = 'Le Conseil municipal';
+$pageLead    = 'Quinze élus au service de la commune et de ses habitants.';
+$crumbs      = [['label' => 'Accueil', 'url' => 'index.php'], ['label' => 'La Mairie'], ['label' => 'Le Conseil municipal']];
 require_once __DIR__ . '/partials/icons.php';
 ob_start();
 ?>
-
-
-    <section class="page-hero">
-      <div class="container">
-        <p class="crumbs"><a href="index.php">Accueil</a> › La Mairie › Le Conseil municipal</p>
-        <h1>Le Conseil municipal</h1>
-        <p class="lead">Quinze élus au service de la commune et de ses habitants.</p>
-      </div>
-    </section>
 
     <section class="section">
       <div class="container">

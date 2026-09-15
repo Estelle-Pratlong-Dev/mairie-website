@@ -6,18 +6,12 @@ $title       = 'Les services municipaux — Mairie de Gagnières';
 $description  = 'Les équipes des services municipaux de Gagnières : administration, social, scolaire, technique, bibliothèque et sécurité.';
 $active      = 'services-mun';
 $canonical   = 'services-municipaux.php';
+$pageTitle   = 'Les services municipaux';
+$pageLead    = 'Les agents de la commune œuvrent chaque jour au service des Gagnièroises et des Gagnièrois.';
+$crumbs      = [['label' => 'Accueil', 'url' => 'index.php'], ['label' => 'La Mairie'], ['label' => 'Les services municipaux']];
 require_once __DIR__ . '/partials/icons.php';
 ob_start();
 ?>
-
-
-    <section class="page-hero">
-      <div class="container">
-        <p class="crumbs"><a href="index.php">Accueil</a> › La Mairie › Les services municipaux</p>
-        <h1>Les services municipaux</h1>
-        <p class="lead">Les agents de la commune œuvrent chaque jour au service des Gagnièroises et des Gagnièrois.</p>
-      </div>
-    </section>
 
     <section class="section">
       <div class="container">

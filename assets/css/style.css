@@ -331,13 +331,35 @@ a:hover { color: var(--slate-900); }
   padding-block: clamp(2.4rem, 5vw, 3.6rem);
 }
 .page-hero h1 { color: var(--slate-900); margin-bottom: 0.2em; }
-.page-hero .crumbs {
-  font-size: 0.85rem;
-  color: var(--ink-soft);
-  margin: 0 0 0.8rem;
+/* Fil d'Ariane */
+.breadcrumb ol {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.55rem;
+  margin: 0 0 1rem;
+  padding: 0;
+  font-size: 0.9rem;
 }
-.page-hero .crumbs a { color: var(--ink-soft); text-decoration: none; }
-.page-hero .crumbs a:hover { color: var(--blue-600); text-decoration: underline; }
+.breadcrumb li { display: flex; align-items: center; gap: 0.35rem 0.55rem; }
+.breadcrumb li:not(:first-child)::before {
+  content: "›";
+  color: var(--slate-600);
+  font-size: 1.1rem;
+  line-height: 1;
+}
+.breadcrumb a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--blue-600);
+  text-decoration: none;
+  font-weight: 500;
+}
+.breadcrumb a:hover { color: var(--blue-500); text-decoration: underline; }
+.breadcrumb [aria-current="page"] { color: var(--slate-900); font-weight: 600; }
+.breadcrumb svg { width: 15px; height: 15px; }
 .page-hero p.lead { color: var(--ink-soft); max-width: 65ch; margin: 0; font-size: 1.05rem; }
 
 /* ------------------------------- Flash info ------------------------------- */
@@ -592,6 +614,71 @@ a.card:hover .card-link { color: var(--slate-900); }
   margin-bottom: 0.7rem;
 }
 .tag.ochre { background: var(--blue-100); color: var(--blue-600); }
+
+/* Liens (réseaux sociaux, site web) d'une fiche professionnel */
+.pro-links { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+.pro-links a {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: var(--slate-050);
+  color: var(--slate-700);
+  border: 1px solid var(--line);
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.pro-links a:hover { background: var(--blue-500); color: #fff; border-color: var(--blue-500); }
+.pro-links svg { width: 18px; height: 18px; }
+
+/* Lien « Voir l'image » (logo, carte de visite, photo) */
+.pro-doc {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.9rem;
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--blue-600);
+  text-decoration: none;
+}
+.pro-doc:hover { color: var(--slate-900); text-decoration: underline; }
+
+/* Fenêtre modale (lightbox) pour agrandir une image */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  background: rgba(20, 24, 29, 0.85);
+  display: none;
+  place-items: center;
+  padding: 2rem;
+}
+.lightbox.open { display: grid; }
+.lightbox img {
+  max-width: min(92vw, 1000px);
+  max-height: 88vh;
+  width: auto;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 12px 44px rgba(0, 0, 0, 0.45);
+}
+.lightbox-close {
+  position: absolute;
+  top: 1rem;
+  right: 1.2rem;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 1.9rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.lightbox-close:hover { background: rgba(255, 255, 255, 0.3); }
 
 /* Liste d'informations (téléphone, adresse…) dans les cartes */
 
@@ -866,6 +953,14 @@ textarea { min-height: 160px; resize: vertical; }
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 1rem;
+  /* Aligne les titres de colonnes avec le nom « Mairie de Gagnières »
+     (dont la hauteur est celle du logo). */
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 640px) {
+  .site-footer h3 { min-height: 0; margin-top: 0.5rem; }
 }
 
 .site-footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
@@ -894,6 +989,8 @@ textarea { min-height: 160px; resize: vertical; }
 }
 .footer-bottom ul { display: flex; gap: 1.2rem; list-style: none; margin: 0; padding: 0; }
 .footer-bottom a { color: #a7c6e0; }
+.footer-credit { color: #cfe2f2; font-weight: 500; text-decoration: none; }
+.footer-credit:hover { color: #fff; text-decoration: underline; }
 
 /* -------------------------------- Divers ---------------------------------- */
 

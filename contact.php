@@ -6,18 +6,12 @@ $title       = 'Contact — Mairie de Gagnières';
 $description  = 'Contactez la mairie de Gagnières : coordonnées, horaires d\'ouverture, formulaire de contact et plan d\'accès.';
 $active      = 'contact';
 $canonical   = 'contact.php';
+$pageTitle   = 'Contacter la mairie';
+$pageLead    = 'Vous désirez nous poser une question, nous signaler un problème technique dans la commune ou nous contacter pour toute autre raison : n\'hésitez pas !';
+$crumbs      = [['label' => 'Accueil', 'url' => 'index.php'], ['label' => 'Contact']];
 require_once __DIR__ . '/partials/icons.php';
 ob_start();
 ?>
-
-
-    <section class="page-hero">
-      <div class="container">
-        <p class="crumbs"><a href="index.php">Accueil</a> › Contact</p>
-        <h1>Contacter la mairie</h1>
-        <p class="lead">Vous désirez nous poser une question, nous signaler un problème technique dans la commune ou nous contacter pour toute autre raison : n'hésitez pas !</p>
-      </div>
-    </section>
 
     <section class="section">
       <div class="container">
@@ -77,7 +71,7 @@ ob_start();
               <div>
                 <button type="submit" class="btn btn-primary">Envoyer le message</button>
               </div>
-              <p class="form-note">Les informations transmises sont utilisées uniquement pour répondre à votre demande, conformément au RGPD. Voir notre <a href="mentions-legales.php#confidentialite">politique de confidentialité</a>.</p>
+              <p class="form-note">Les informations transmises sont utilisées uniquement pour répondre à votre demande, conformément au RGPD. Voir notre <a href="confidentialite.php">politique de confidentialité</a>.</p>
             </form>
           </div>
           <div>

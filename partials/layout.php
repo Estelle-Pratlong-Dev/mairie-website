@@ -27,6 +27,9 @@ $canonical       = $canonical       ?? '';
 $robots          = $robots          ?? 'index, follow';
 $content         = $content         ?? '';
 $includeAnnonces = $includeAnnonces ?? false;
+$pageTitle       = $pageTitle       ?? '';   // titre du bandeau interne (H1) — vide sur l'accueil
+$pageLead        = $pageLead        ?? '';   // sous-titre facultatif du bandeau
+$crumbs          = $crumbs          ?? [];   // fil d'Ariane, voir breadcrumb()
 
 /* Réglages globaux (adresse du site…) : centralisés dans config.php */
 require __DIR__ . '/../config.php';
@@ -172,6 +175,18 @@ function navClass(string $key, string $active, string $base = ''): string {
 
   <!-- ============================ Contenu de la page ======================= -->
   <main id="contenu">
+<?php if ($pageTitle !== ''): ?>
+    <!-- Bandeau de titre commun (fil d'Ariane + titre + sous-titre) -->
+    <section class="page-hero">
+      <div class="container">
+<?php if (!empty($crumbs)): ?>        <?= breadcrumb($crumbs) ?>
+<?php endif; ?>
+        <h1><?= htmlspecialchars($pageTitle) ?></h1>
+<?php if ($pageLead !== ''): ?>        <p class="lead"><?= $pageLead ?></p>
+<?php endif; ?>
+      </div>
+    </section>
+<?php endif; ?>
 <?= $content ?>
   </main>
 
@@ -224,13 +239,19 @@ function navClass(string $key, string $active, string $base = ''): string {
       </div>
     </div>
     <div class="container footer-bottom">
-      <p style="margin:0">© <span class="js-year">2026</span> Mairie de Gagnières — Tous droits réservés</p>
+      <p style="margin:0">© <span class="js-year">2026</span> Mairie de Gagnières — Tous droits réservés · <a class="footer-credit" href="https://estelle-pratlong.fr/" target="_blank" rel="noopener">Site réalisé par Estelle Pratlong</a></p>
       <ul>
         <li><a href="mentions-legales.php">Mentions légales</a></li>
-        <li><a href="mentions-legales.php#confidentialite">Politique de confidentialité</a></li>
+        <li><a href="confidentialite.php">Politique de confidentialité</a></li>
       </ul>
     </div>
   </footer>
+
+  <!-- Fenêtre modale d'agrandissement d'image (liens « Voir l'image ») -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox-close" type="button" aria-label="Fermer">&times;</button>
+    <img src="" alt="" id="lightbox-img">
+  </div>
 
   <!-- ============================== Scripts ==============================
        annonces.js n'est chargé que si la page l'a demandé ($includeAnnonces),
