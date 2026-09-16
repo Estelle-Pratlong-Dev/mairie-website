@@ -1,0 +1,18 @@
+[
+    {
+        "id": "exemple-1",
+        "titre": "Titre de l'annonce",
+        "quand": "Samedi 14 juin à partir de 9h",
+        "texte": "Description affichée sur la carte du carrousel de la page d'accueil.",
+        "date_fin": "2099-12-31",
+        "affiche": ""
+    },
+    {
+        "id": "exemple-2",
+        "titre": "Deuxième annonce",
+        "quand": "Jusqu'au 31 décembre",
+        "texte": "Le champ « affiche » peut contenir le nom d'une image déposée dans assets/img/event/.",
+        "date_fin": "2099-12-31",
+        "affiche": ""
+    }
+]
