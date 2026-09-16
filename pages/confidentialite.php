@@ -51,7 +51,7 @@ ob_start();
           <p>Si, après nous avoir contactés, vous estimez que vos droits ne sont pas respectés, vous pouvez adresser une réclamation à la CNIL — 3 place de Fontenoy, TSA 80715, 75334 Paris Cedex 07 — <a href="https://www.cnil.fr" target="_blank" rel="noopener">cnil.fr</a>.</p>
 
           <h2>Cookies</h2>
-          <p>Ce site n'utilise aucun cookie de suivi ni outil de mesure d'audience. Seules les polices de caractères sont chargées depuis un service tiers (Google Fonts).</p>
+          <p>Ce site n'utilise aucun cookie de suivi ni outil de mesure d'audience. Les polices de caractères sont hébergées directement sur le site : aucune donnée (pas même votre adresse IP) n'est transmise à un service tiers.</p>
 
           <h2>Réseaux sociaux</h2>
           <p>Les liens vers Facebook et Instagram présents sur le site sont de simples liens : aucune donnée n'est transmise à ces plateformes tant que vous ne cliquez pas volontairement pour vous y rendre. Une fois sur ces réseaux, leurs propres règles de confidentialité s'appliquent.</p>

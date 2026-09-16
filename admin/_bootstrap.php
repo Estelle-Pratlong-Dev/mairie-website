@@ -143,6 +143,7 @@ function admin_header(string $titre): void
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
   <title><?= htmlspecialchars($titre) ?> — Administration</title>
+  <link rel="stylesheet" href="../assets/css/fonts.css<?= asset_ver(__DIR__ . '/../assets/css/fonts.css') ?>">
   <link rel="stylesheet" href="../assets/css/style.css<?= asset_ver(__DIR__ . '/../assets/css/style.css') ?>">
   <link rel="stylesheet" href="../assets/css/admin.css<?= asset_ver(__DIR__ . '/../assets/css/admin.css') ?>">
 </head>
