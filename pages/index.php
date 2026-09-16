@@ -5,7 +5,7 @@
 $title       = 'Mairie de Gagnières — Site officiel de la commune (Gard, Occitanie)';
 $description  = "Site officiel de la mairie de Gagnières, commune du Gard en Occitanie, à la limite de l'Ardèche. Démarches, services, associations et vie locale.";
 $active      = 'accueil';
-$canonical   = 'index.php';
+$canonical   = '';   // accueil = racine du site (https://…/) et non /index.php
 require_once __DIR__ . '/../partials/icons.php';
 require_once __DIR__ . '/../partials/annonces.php';
 $annoncesActives = annonces_actives();   // annonces « Flash info » gérées dans /admin, affichées en carrousel

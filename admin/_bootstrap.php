@@ -16,7 +16,11 @@ require_once __DIR__ . '/../partials/annonces.php';   // données des annonces F
 
 /* --- Session sécurisée ---------------------------------------------------- */
 if (session_status() !== PHP_SESSION_ACTIVE) {
-    session_set_cookie_params(['httponly' => true, 'samesite' => 'Lax']);
+    // Cookie sécurisé : 'secure' activé automatiquement en HTTPS (production),
+    // laissé inactif en local (http://…test) pour ne pas bloquer la connexion.
+    $enHttps = (($_SERVER['HTTPS'] ?? '') !== '' && ($_SERVER['HTTPS'] ?? '') !== 'off')
+        || (($_SERVER['SERVER_PORT'] ?? '') === '443');
+    session_set_cookie_params(['httponly' => true, 'samesite' => 'Lax', 'secure' => $enHttps]);
     session_name('mairie_admin');
     session_start();
 }
