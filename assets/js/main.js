@@ -40,7 +40,9 @@ document.addEventListener('DOMContentLoaded', function () {
     if (e.key === 'Escape') {
       document.querySelectorAll('.nav-drop.open').forEach(function (d) {
         d.classList.remove('open');
-        d.querySelector('button').setAttribute('aria-expanded', 'false');
+        var btn = d.querySelector('button');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.focus();   // rendre le focus au bouton déclencheur (ex. « La Mairie »)
       });
     }
   });

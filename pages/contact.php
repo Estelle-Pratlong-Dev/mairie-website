@@ -140,6 +140,7 @@ ob_start();
             </div>
 <?php endif; ?>
             <form method="post" action="contact.php" class="form-grid">
+              <p class="form-note">Les champs suivis d'un astérisque (<span class="req">*</span>) sont obligatoires.</p>
               <div class="row-2">
                 <div>
                   <label for="cf-nom">Nom <span class="req">*</span></label>
