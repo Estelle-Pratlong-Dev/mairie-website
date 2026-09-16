@@ -119,7 +119,7 @@ ob_start();
           <div class="card">
             <h2 style="font-size: 1.4rem;">Écrivez-nous</h2>
 <?php if ($envoye): ?>
-            <div class="form-success">
+            <div class="form-success" role="status">
               <?= icon('check-circle') ?>
               <div>
                 <strong>Votre message a bien été envoyé.</strong><br>
@@ -130,7 +130,7 @@ ob_start();
 <?php else: ?>
             <p style="color: var(--ink-soft); font-size: 0.95rem;">Votre message est transmis directement à la mairie, et vous en recevez un accusé de réception par e-mail.</p>
 <?php if ($formErrors): ?>
-            <div class="form-error">
+            <div class="form-error" role="alert">
               <strong>Votre message n'a pas pu être envoyé :</strong>
               <ul>
 <?php foreach ($formErrors as $err): ?>                <li><?= htmlspecialchars($err) ?></li>
