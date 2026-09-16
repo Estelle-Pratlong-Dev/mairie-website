@@ -179,10 +179,10 @@ par le secrétariat).
 - Depuis la liste, on peut à tout moment **Modifier** ou **Supprimer** une annonce.
 - Dans la liste, une pastille indique si l'annonce est **En ligne** ou **Expirée**.
 
-### Changer le mot de passe (important avant la mise en ligne)
-Le mot de passe temporaire actuel est **`gagnieres2026`** — **à changer**. Le mot de passe
-n'est jamais stocké en clair : seule son **empreinte** est enregistrée dans `config.php`.
-Pour en définir un nouveau, exécuter en local :
+### Changer le mot de passe
+Le mot de passe n'est jamais stocké en clair : seule son **empreinte** est enregistrée dans
+`config.php`. Pour en définir un nouveau, choisir un mot de passe en **lettres et chiffres**
+(aucun caractère à échapper) puis exécuter en local :
 
 ```
 php -r "echo password_hash('le-nouveau-mot-de-passe', PASSWORD_DEFAULT);"
