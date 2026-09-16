@@ -49,9 +49,7 @@ $mairie = [
  *
  *     php -r "echo password_hash('le-nouveau-mot-de-passe', PASSWORD_DEFAULT);"
  *
- * puis coller le résultat ci-dessous (entre les apostrophes).
- *
- * ⚠ Mot de passe temporaire actuel : « gagnieres2026 » — À CHANGER avant la
- *   mise en ligne.
+ * puis coller le résultat ci-dessous (entre les apostrophes) : lettres et
+ * chiffres uniquement pour n'avoir aucun caractère à échapper dans la commande.
  * ------------------------------------------------------------------------- */
-$adminMotDePasseHash = '$2y$12$3lqodJTNJmXs9z4kOSdGi.aFhByGnYI7QDHW8SgAMhsdQb4hj6GrG';
+$adminMotDePasseHash = '$2y$12$pfF8Tt2Avv2CfudTOw7wduEB8F4wi9xhG3QKFWV0PTR1s9uHWODf.';
