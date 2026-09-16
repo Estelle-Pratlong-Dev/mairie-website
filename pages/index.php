@@ -39,7 +39,6 @@ ob_start();
       </div>
     </section>
 
-
     <!-- ============================ Actualités & agenda =====================
          Le carrousel affiche les annonces « Flash info » gérées dans /admin.
          Chaque annonce disparaît d'elle-même passée sa date de fin ; quand il
