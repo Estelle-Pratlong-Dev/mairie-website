@@ -206,7 +206,7 @@ function navClass(string $key, string $active, string $base = ''): string {
         </ul>
       </div>
       <div>
-        <h3>Horaires d'ouverture</h3>
+        <h2>Horaires d'ouverture</h2>
         <dl class="footer-hours">
 <?php foreach ($mairie['horaires'] as $jour => $plage): ?>
           <div><dt><?= $jour ?></dt><dd><?= $plage ?></dd></div>
@@ -214,7 +214,7 @@ function navClass(string $key, string $active, string $base = ''): string {
         </dl>
       </div>
       <div>
-        <h3>La commune</h3>
+        <h2>La commune</h2>
         <ul>
           <li><a href="mot-du-maire.php">Le mot du Maire</a></li>
           <li><a href="conseil-municipal.php">Le Conseil municipal</a></li>
@@ -224,7 +224,7 @@ function navClass(string $key, string $active, string $base = ''): string {
         </ul>
       </div>
       <div>
-        <h3>Démarches</h3>
+        <h2>Démarches</h2>
         <ul>
           <li><a href="https://www.service-public.gouv.fr/" target="_blank" rel="noopener">Service-Public.fr</a></li>
           <li><a href="https://www.service-public.gouv.fr/particuliers/vosdroits/N359" target="_blank" rel="noopener">Actes d'état civil</a></li>
