@@ -77,6 +77,7 @@ Principe du **gabarit unique**, comme le `base.html.twig` de Symfony :
 | `partials/icons.php` | Catalogue d'icônes SVG + fil d'Ariane |
 | `partials/annonces.php` | Lecture/écriture des annonces (accueil + admin) |
 | `assets/css/style.css` · `assets/css/admin.css` | Mise en forme du site public / de l'admin |
+| `assets/css/fonts.css` · `assets/fonts/` | Polices Inter & Outfit **hébergées en local** (aucune requête externe, RGPD) |
 | `assets/js/main.js` | Menu mobile, fenêtre modale, carrousel d'actualités |
 | `assets/img/village/` · `pro/` · `asso/` · `event/` | Photos et affiches |
 | `sitemap.php` · `robots.txt` · `.htaccess` · `favicon.svg` | Référencement / config serveur (URLs propres, sécurité, cache) |
