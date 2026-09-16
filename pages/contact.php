@@ -108,6 +108,7 @@ ob_start();
             <span class="icon-badge accent" aria-hidden="true"><?= icon('clock') ?></span>
             <h2>Horaires d'ouverture</h2>
             <table class="hours-table">
+              <caption class="sr-only">Horaires d'ouverture de la mairie au public</caption>
 <?php foreach ($mairie['horaires'] as $jour => $plage): ?>
               <tr><th scope="row"><?= $jour ?></th><td><?= $plage ?></td></tr>
 <?php endforeach; ?>
