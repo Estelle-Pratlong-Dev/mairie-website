@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
     toggle.addEventListener('click', function () {
       var open = nav.classList.toggle('open');
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
     });
   }
 
@@ -53,30 +54,36 @@ document.addEventListener('DOMContentLoaded', function () {
     el.textContent = new Date().getFullYear();
   });
 
-  // Lightbox « Voir l'image » : ouvre l'image dans une fenêtre modale.
+  // Lightbox « Voir l'image » : fenêtre modale accessible (rôle dialog, gestion
+  // du focus : déplacé sur « Fermer » à l'ouverture, piégé à l'intérieur, puis
+  // rendu au lien d'origine à la fermeture).
   var lightbox = document.getElementById('lightbox');
   if (lightbox) {
     var lightboxImg = document.getElementById('lightbox-img');
     var lightboxClose = lightbox.querySelector('.lightbox-close');
+    var declencheur = null;   // lien qui a ouvert la modale, pour lui rendre le focus
 
-    var openLightbox = function (src, alt) {
+    var openLightbox = function (src, alt, source) {
+      declencheur = source || null;
       lightboxImg.src = src;
       lightboxImg.alt = alt || '';
       lightbox.classList.add('open');
       lightbox.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
+      lightboxClose.focus();
     };
     var closeLightbox = function () {
       lightbox.classList.remove('open');
       lightbox.setAttribute('aria-hidden', 'true');
       lightboxImg.src = '';
       document.body.style.overflow = '';
+      if (declencheur) { declencheur.focus(); declencheur = null; }
     };
 
     document.querySelectorAll('.js-lightbox').forEach(function (link) {
       link.addEventListener('click', function (e) {
         e.preventDefault();
-        openLightbox(link.getAttribute('href'), link.getAttribute('data-alt'));
+        openLightbox(link.getAttribute('href'), link.getAttribute('data-alt'), link);
       });
     });
 
@@ -85,7 +92,14 @@ document.addEventListener('DOMContentLoaded', function () {
       if (e.target === lightbox) { closeLightbox(); }
     });
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && lightbox.classList.contains('open')) { closeLightbox(); }
+      if (!lightbox.classList.contains('open')) { return; }
+      if (e.key === 'Escape') {
+        closeLightbox();
+      } else if (e.key === 'Tab') {
+        // Un seul élément focusable (le bouton Fermer) : on y maintient le focus.
+        e.preventDefault();
+        lightboxClose.focus();
+      }
     });
   }
 

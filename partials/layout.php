@@ -245,7 +245,7 @@ function navClass(string $key, string $active, string $base = ''): string {
   </footer>
 
   <!-- Fenêtre modale d'agrandissement d'image (liens « Voir l'image ») -->
-  <div class="lightbox" id="lightbox" aria-hidden="true">
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image agrandie" aria-hidden="true">
     <button class="lightbox-close" type="button" aria-label="Fermer">&times;</button>
     <img src="" alt="" id="lightbox-img">
   </div>
