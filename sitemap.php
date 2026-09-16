@@ -8,7 +8,7 @@ require __DIR__ . '/config.php';
 header('Content-Type: application/xml; charset=UTF-8');
 
 $pages = [
-    'index.php'               => '1.0',
+    ''                        => '1.0',
     'services.php'            => '0.8',
     'contact.php'            => '0.8',
     'professionnels.php'     => '0.7',
