@@ -90,7 +90,7 @@ ob_start();
         <div class="grid cols-3" style="margin-bottom: 2.5rem;">
           <div class="card">
             <span class="icon-badge" aria-hidden="true"><?= icon('phone') ?></span>
-            <h3>Par téléphone</h3>
+            <h2>Par téléphone</h2>
             <ul class="info-list">
               <li><a href="tel:<?= telHref($mairie['tel']) ?>"><?= $mairie['tel'] ?></a></li>
               <li>Urgences mairie : <a href="tel:<?= telHref($mairie['tel_urgence']) ?>"><?= $mairie['tel_urgence'] ?></a></li>
@@ -98,7 +98,7 @@ ob_start();
           </div>
           <div class="card">
             <span class="icon-badge" aria-hidden="true"><?= icon('mail') ?></span>
-            <h3>Par e-mail ou courrier</h3>
+            <h2>Par e-mail ou courrier</h2>
             <ul class="info-list">
               <li><a href="mailto:<?= $mairie['email'] ?>"><?= $mairie['email'] ?></a></li>
               <li><?= $mairie['nom'] ?><br><?= $mairie['adresse'] ?><br><?= $mairie['code_postal'] ?> <?= $mairie['ville'] ?></li>
@@ -106,7 +106,7 @@ ob_start();
           </div>
           <div class="card">
             <span class="icon-badge accent" aria-hidden="true"><?= icon('clock') ?></span>
-            <h3>Horaires d'ouverture</h3>
+            <h2>Horaires d'ouverture</h2>
             <table class="hours-table">
 <?php foreach ($mairie['horaires'] as $jour => $plage): ?>
               <tr><th scope="row"><?= $jour ?></th><td><?= $plage ?></td></tr>
