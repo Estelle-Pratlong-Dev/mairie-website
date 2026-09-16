@@ -29,6 +29,10 @@ ob_start();
 
         <hr class="divider">
 
+        <div class="section-head">
+          <h2>Aller plus loin</h2>
+        </div>
+
         <div class="grid cols-2">
           <a class="card" href="conseil-municipal.php">
             <span class="icon-badge" aria-hidden="true"><?= icon('users') ?></span>

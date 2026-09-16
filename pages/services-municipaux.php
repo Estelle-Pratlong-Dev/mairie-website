@@ -18,7 +18,7 @@ ob_start();
         <div class="grid cols-2">
           <div class="card">
             <span class="icon-badge" aria-hidden="true"><?= icon('landmark') ?></span>
-            <h3>Services administratifs</h3>
+            <h2>Services administratifs</h2>
             <p>Accueil, état civil, élections, secrétariat de mairie.</p>
             <ul class="info-list">
               <li><?= icon('users', 'icon') ?>
@@ -27,7 +27,7 @@ ob_start();
           </div>
           <div class="card">
             <span class="icon-badge" aria-hidden="true"><?= icon('heart') ?></span>
-            <h3>Pôle d'actions sociales</h3>
+            <h2>Pôle d'actions sociales</h2>
             <p>Accompagnement social et actions en direction des aînés. Permanence le mercredi matin de 10h à 12h en mairie.</p>
             <ul class="info-list">
               <li><?= icon('users', 'icon') ?>
@@ -36,7 +36,7 @@ ob_start();
           </div>
           <div class="card">
             <span class="icon-badge" aria-hidden="true"><?= icon('school') ?></span>
-            <h3>Services scolaires</h3>
+            <h2>Services scolaires</h2>
             <p>Cantine, garderie et accompagnement des enfants de l'école de Gagnières.</p>
             <ul class="info-list">
               <li><?= icon('users', 'icon') ?>
@@ -45,7 +45,7 @@ ob_start();
           </div>
           <div class="card">
             <span class="icon-badge" aria-hidden="true"><?= icon('tool') ?></span>
-            <h3>Services techniques</h3>
+            <h2>Services techniques</h2>
             <p>Entretien des bâtiments, de la voirie et des espaces publics de la commune.</p>
             <ul class="info-list">
               <li><?= icon('users', 'icon') ?>
@@ -54,7 +54,7 @@ ob_start();
           </div>
           <div class="card">
             <span class="icon-badge" aria-hidden="true"><?= icon('book') ?></span>
-            <h3>Bibliothèque municipale</h3>
+            <h2>Bibliothèque municipale</h2>
             <p>Bibliothèque et pôle informatique, 9 rue de l'Église.</p>
             <ul class="info-list">
               <li><?= icon('users', 'icon') ?>
@@ -63,7 +63,7 @@ ob_start();
           </div>
           <div class="card">
             <span class="icon-badge" aria-hidden="true"><?= icon('shield') ?></span>
-            <h3>Service sécurité</h3>
+            <h2>Service sécurité</h2>
             <p>Prévention et sécurité sur la commune.</p>
             <ul class="info-list">
               <li><?= icon('users', 'icon') ?>
