@@ -54,4 +54,5 @@ RedirectMatch 403 ^/admin/_
   ExpiresByType image/jpeg          "access plus 6 months"
   ExpiresByType image/png           "access plus 6 months"
   ExpiresByType image/svg+xml       "access plus 6 months"
+  ExpiresByType font/woff2          "access plus 1 year"
 </IfModule>

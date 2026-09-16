@@ -8,7 +8,8 @@ et des accès d'hébergement.
 
 - **Langage** : PHP « vanilla » (pages assemblées par un gabarit unique), sans framework
   ni étape de build.
-- **Dépendances** : aucune. Seules les polices Google Fonts sont chargées à distance.
+- **Dépendances** : aucune, et **aucune requête externe** — les polices (Inter, Outfit) sont
+  hébergées en local (`assets/fonts/`), donc rien n'est transmis à un service tiers (RGPD).
 - **Hébergement** : tout hébergement mutualisé avec PHP (le site cible **Amen**, l'hébergeur
   actuel de la commune).
 

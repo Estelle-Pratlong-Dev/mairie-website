@@ -222,8 +222,9 @@ affiches dans **`assets/img/event/`**. Une sauvegarde du site = une copie de ces
 
 ## 6. Pour un développeur (détails techniques)
 
-- **Aucune dépendance** : PHP + HTML/CSS/JS natifs. Seules les polices Google Fonts sont
-  chargées à distance.
+- **Aucune dépendance ni requête externe** : PHP + HTML/CSS/JS natifs, et les polices (Inter,
+  Outfit) sont **hébergées en local** (`assets/fonts/`, chargées via `assets/css/fonts.css`) —
+  aucune donnée transmise à un tiers (RGPD).
 - **URLs propres** : `.htaccess` réécrit `/xxx.php` vers `pages/xxx.php` et `/` vers
   `pages/index.php`. Les fichiers réels (assets, `sitemap.php`, `robots.txt`) ne sont pas
   réécrits. Les dossiers `partials/`, `data/` et les fichiers `admin/_*` sont interdits d'accès

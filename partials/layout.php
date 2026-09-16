@@ -72,10 +72,8 @@ function navClass(string $key, string $active, string $base = ''): string {
   <!-- ---------- Icône du site ---------- -->
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
-  <!-- ---------- Polices ---------- -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <!-- ---------- Polices (hébergées en local, aucun service tiers) ---------- -->
+  <link rel="stylesheet" href="assets/css/fonts.css<?= asset_ver(__DIR__ . '/../assets/css/fonts.css') ?>">
 
   <!-- ---------- Feuille de styles ---------- -->
   <link rel="stylesheet" href="assets/css/style.css<?= asset_ver(__DIR__ . '/../assets/css/style.css') ?>">
