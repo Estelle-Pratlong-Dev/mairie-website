@@ -37,7 +37,9 @@ mairie-website/
 ├── config.php                ⭐ RÉGLAGES : domaine, coordonnées de la mairie, mot de passe admin
 │
 ├── data/
-│   └── annonces.json         ⭐ Les annonces « Flash info » (écrites par l'espace admin)
+│   ├── annonces.json         ⭐ Les annonces « Flash info » (écrites par l'espace admin,
+│   │                             contenu NON versionné — voir partie 4)
+│   └── annonces.example.json    Exemple de format (à copier vers annonces.json pour une démo)
 │
 ├── partials/                 Briques communes à toutes les pages
 │   ├── layout.php            Le « squelette » (en-tête, menu, pied de page, SEO, modale)
@@ -177,7 +179,13 @@ puis coller le résultat dans `config.php`, à la ligne `$adminMotDePasseHash = 
 
 ### Où sont enregistrées les annonces ?
 Dans le fichier **`data/annonces.json`** (écrit automatiquement par l'espace admin) et les
-affiches dans **`assets/img/event/`**. Une sauvegarde du site = une copie de ces éléments.
+affiches dans **`assets/img/event/`**. Une sauvegarde du site = une copie de ces deux éléments.
+
+> **Important — contenu vs code :** `data/annonces.json` et les affiches de `assets/img/event/`
+> sont du **contenu** saisi depuis l'admin, pas du code : ils **ne sont pas versionnés** (git les
+> ignore). Le dépôt reste ainsi propre, et **mettre à jour le code du site n'écrase jamais les
+> annonces** publiées en ligne. Pour repartir d'une démo, copier `data/annonces.example.json`
+> vers `data/annonces.json`.
 
 > **Note technique :** l'accueil lit `data/annonces.json` côté serveur (via
 > `partials/annonces.php`) et affiche les annonces encore valides. Il n'y a plus de fichier
@@ -199,6 +207,11 @@ affiches dans **`assets/img/event/`**. Une sauvegarde du site = une copie de ces
 7. Vérifier que le **dossier `data/` est accessible en écriture** par le serveur (pour que
    l'espace admin puisse enregistrer les annonces).
 8. Vérifier que le formulaire de contact envoie bien les e-mails, et tester l'espace admin.
+
+> **Mises à jour ultérieures du site :** ne re-téléverser que les fichiers **de code** modifiés.
+> Ne pas écraser `data/annonces.json` ni le contenu de `assets/img/event/` en ligne : ce sont les
+> annonces publiées par le secrétariat. (C'est pour cela qu'ils ne sont pas dans le dépôt git.)
+> Il est prudent d'en garder une **sauvegarde** régulière.
 
 ### Points restant à finaliser avant la bascule
 - Actualiser le **mot du Maire** (texte encore signé Olivier Martin) et le faire valider.

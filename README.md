@@ -22,12 +22,22 @@ double-clic sur un fichier ne suffit pas).
 - **Gabarit unique** : en-tête, menu, pied de page et `<head>` (SEO) définis à un seul endroit.
 - **Annuaires** professionnels et associations pilotés par des **tableaux de données** (ajouter
   une fiche = ajouter quelques lignes, sans recopier de HTML).
-- **Flash info** : annonces d'accueil à **expiration automatique** par date, publiées depuis un
-  **espace d'administration** (`/admin`) réservé au secrétariat — sans toucher au code.
+- **Actualités** : les annonces sont publiées depuis un **espace d'administration** (`/admin`)
+  et s'affichent en **carrousel** sur l'accueil, avec **expiration automatique** par date — sans
+  toucher au code.
 - **Fenêtre modale** (« Voir l'image ») pour agrandir logos, cartes de visite et photos.
 - **Référencement** complet (voir plus bas) et pages **légales / RGPD** conformes.
 - **Responsive** (mobile, tablette) et **accessible** (navigation clavier, contrastes,
   fil d'Ariane sémantique, `alt` sur les images).
+
+## Espace d'administration
+
+Une interface protégée par mot de passe (`/admin`) permet au secrétariat de **publier les
+annonces** de l'accueil (titre, date de fin, description, affiche) **sans connaissances
+techniques**. Côté sécurité : mot de passe unique **haché** (`password_hash`), session PHP,
+protection **CSRF** sur tous les formulaires et **téléversement d'image validé** (type MIME réel
+et taille). Les annonces sont enregistrées dans `data/annonces.json` et affichées en carrousel sur
+l'accueil. Mode d'emploi détaillé dans **`GUIDE.md`** (partie 4).
 
 ## Architecture
 
@@ -61,12 +71,12 @@ Principe du **gabarit unique**, comme le `base.html.twig` de Symfony :
 | `pages/` | **Toutes les pages du site** (accueil, La Mairie, vie pratique, annuaires, contact, pages légales, 404). L'adresse publique reste propre grâce à `.htaccess` : `pages/services.php` → `/services.php` |
 | `admin/` | **Espace d'administration** : connexion + gestion des annonces « Flash info » |
 | `config.php` | **Domaine, coordonnées de la mairie et mot de passe admin** — un seul endroit à tenir à jour |
-| `data/annonces.json` | **Contenu des annonces Flash info** (écrit par l'espace admin) |
+| `data/annonces.json` | **Contenu des annonces** (écrit par l'espace admin) — **non versionné** ; `data/annonces.example.json` donne le format |
 | `partials/layout.php` | Gabarit commun (menu, pied de page, SEO, modale) |
 | `partials/icons.php` | Catalogue d'icônes SVG + fil d'Ariane |
 | `partials/annonces.php` | Lecture/écriture des annonces (accueil + admin) |
 | `assets/css/style.css` · `assets/css/admin.css` | Mise en forme du site public / de l'admin |
-| `assets/js/main.js` | Menu mobile, fenêtre modale |
+| `assets/js/main.js` | Menu mobile, fenêtre modale, carrousel d'actualités |
 | `assets/img/village/` · `pro/` · `asso/` · `event/` | Photos et affiches |
 | `sitemap.php` · `robots.txt` · `.htaccess` · `favicon.svg` | Référencement / config serveur (URLs propres, sécurité, cache) |
 
@@ -99,6 +109,11 @@ Titre + description uniques par page, URL canoniques, Open Graph, données struc
    est ignoré par git et inutile en ligne).
 5. Vérifier que **`mod_rewrite` est actif** (URLs propres) et que le dossier **`data/`** est
    accessible en écriture (pour que l'admin puisse enregistrer les annonces).
+
+> **Contenu vs code.** Les annonces (`data/annonces.json`) et les affiches téléversées
+> (`assets/img/event/`) sont du contenu saisi en ligne : ils **ne sont pas versionnés**. Lors
+> d'une mise à jour du code, ne pas les écraser sur le serveur. Pour une démo locale, copier
+> `data/annonces.example.json` vers `data/annonces.json`.
 
 ### Points à finaliser avant la bascule
 

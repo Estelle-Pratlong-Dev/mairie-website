@@ -1,6 +1,14 @@
 # Configuration locale de l'aperçu (outil de développement, pas le site)
 .claude/
 
+# Contenu géré depuis l'admin = données d'exécution, PAS du code.
+# On ne le versionne pas : le dépôt reste propre et un déploiement du code
+# n'écrase jamais les annonces/affiches saisies en ligne.
+# (Pour repartir d'une démo : copier data/annonces.example.json -> data/annonces.json)
+/data/annonces.json
+/assets/img/event/*
+!/assets/img/event/.gitkeep
+
 # Artefacts d'enregistrement de page web
 assets/img/mairie.htm
 *_files/
