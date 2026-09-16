@@ -77,6 +77,10 @@ p { margin: 0 0 1em; }
 
 a { color: var(--blue-600); }
 a:hover { color: var(--slate-900); }
+/* Liens intégrés dans du texte : soulignés, pour être repérables sans la
+   couleur seule (critère RGAA). Les liens d'interface (menu, boutons, cartes,
+   colonnes du pied de page) restent stylés par leurs composants. */
+.prose a, p a:not(.btn) { text-decoration: underline; }
 
 :focus-visible {
   outline: 3px solid var(--blue-500);
@@ -264,6 +268,8 @@ a:hover { color: var(--slate-900); }
   background:
     linear-gradient(100deg, rgba(20, 24, 29, 0.78) 0%, rgba(20, 24, 29, 0.55) 38%, rgba(20, 24, 29, 0.18) 70%, rgba(20, 24, 29, 0.05) 100%),
     url("../img/village/ville-de-gagnieres.jpg") center / cover no-repeat;
+  /* Couleur de repli si l'image ne se charge pas (texte blanc lisible) */
+  background-color: var(--slate-950);
   color: #fff;
   overflow: hidden;
 }
@@ -1023,7 +1029,6 @@ textarea { min-height: 160px; resize: vertical; }
 .actu-body h3 { margin: 0.45rem 0 0.5rem; font-size: 1.12rem; color: var(--slate-900); }
 .actu-body p {
   margin: 0; color: var(--ink-soft); font-size: 0.93rem;
-  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
 }
 /* Image dans une zone de hauteur FIXE, affichée EN ENTIER (jamais rognée). */
 .actu-media { flex: 0 0 auto; height: 230px; background: var(--slate-050); }
@@ -1056,8 +1061,14 @@ textarea { min-height: 160px; resize: vertical; }
   .carousel.is-static .carousel-slide { flex-basis: calc((100% - 1.25rem) / 2); }
 }
 @media (max-width: 600px) {
-  .carousel.is-scroll .carousel-slide { flex-basis: 84%; }
-  .carousel.is-static .carousel-slide { flex-basis: 100%; }
+  /* Sur mobile : cartes empilées verticalement (pas de défilement horizontal) */
+  .carousel.is-scroll .carousel-track,
+  .carousel.is-static .carousel-track {
+    flex-direction: column; overflow-x: visible; scroll-snap-type: none;
+  }
+  .carousel.is-scroll .carousel-slide,
+  .carousel.is-static .carousel-slide { flex-basis: auto; max-width: 100%; }
+  .carousel-arrow { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
