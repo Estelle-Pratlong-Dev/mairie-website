@@ -240,6 +240,7 @@ function navClass(string $key, string $active, string $base = ''): string {
         <li><a href="mentions-legales.php">Mentions légales</a></li>
         <li><a href="confidentialite.php">Politique de confidentialité</a></li>
         <li><a href="accessibilite.php">Accessibilité : non conforme</a></li>
+        <li><a href="plan-du-site.php">Plan du site</a></li>
       </ul>
     </div>
   </footer>

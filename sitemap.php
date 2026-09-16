@@ -16,6 +16,7 @@ $pages = [
     'mot-du-maire.php'       => '0.6',
     'conseil-municipal.php'  => '0.6',
     'services-municipaux.php' => '0.6',
+    'plan-du-site.php'        => '0.3',
 ];
 
 echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
