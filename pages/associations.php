@@ -103,7 +103,7 @@ ob_start();
 <?php foreach ($assos as $a): ?>
           <div class="card">
             <span class="icon-badge<?= !empty($a['accent']) ? ' accent' : '' ?>" aria-hidden="true"><?= icon($a['icon']) ?></span>
-            <h3><?= htmlspecialchars($a['name']) ?></h3>
+            <h2><?= htmlspecialchars($a['name']) ?></h2>
             <p><?= $a['desc'] ?></p>
 <?php if (!empty($a['address']) || !empty($a['phones']) || !empty($a['email'])): ?>
             <ul class="info-list">

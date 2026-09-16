@@ -122,6 +122,19 @@ les liens et l'image. Déposer les images dans `assets/img/pro/`.
 ➡ **`pages/associations.php`** : même principe, tableau `$assos` en haut du fichier. Images
 dans `assets/img/asso/`.
 
+> **Accessibilité — règle importante :** toujours renseigner les informations dans les **champs
+> texte** (nom, description, adresse, téléphone, e-mail, liens). L'image (« Voir l'image ») n'est
+> qu'un **complément visuel** : ne jamais mettre une information *uniquement* sur l'image (une
+> carte de visite scannée, par exemple), car elle serait alors invisible pour un lecteur d'écran
+> ou un moteur de recherche.
+
+### Ajouter un document à télécharger (PDF, lien Google Drive…)
+➡ Vérifier que le document est **accessible** : un PDF doit être « balisé » (texte sélectionnable
+et structuré, jamais une simple image scannée d'une feuille). Si ce n'est pas réalisable, fournir
+une **alternative accessible** à côté du lien (le même contenu en page HTML, ou au minimum un
+résumé en texte). Le RGAA impose cette exigence à **tout document mis en ligne** (arrêtés,
+comptes rendus, formulaires…).
+
 ### Changer les couleurs du site
 ➡ **`assets/css/style.css`**, tout en haut (`--slate-*` pour les gris, `--blue-*` pour le bleu).
 

@@ -511,7 +511,7 @@ a.card:hover {
 .card .icon-badge svg { width: 24px; height: 24px; }
 .card.accent .icon-badge { background: var(--blue-100); color: var(--blue-600); }
 
-.card h3 { margin-bottom: 0.35rem; }
+.card h2, .card h3 { font-size: 1.22rem; margin-bottom: 0.35rem; }
 .card p { color: var(--ink-soft); font-size: 0.94rem; margin-bottom: 0; }
 
 .card .card-link {
