@@ -15,16 +15,21 @@ ob_start();
     <section class="section">
       <div class="container">
         <div class="prose">
-          <!-- NOTE : texte repris du site précédent, signé par M. Olivier Martin.
-               À faire actualiser et signer par le maire actuel avant mise en ligne. -->
-          <p>Chers administrés,</p>
-          <p>Je suis heureux au nom des élus du conseil municipal de Gagnières de vous présenter le nouveau site officiel de la Mairie de Gagnières.</p>
-          <blockquote class="pull">Un site qui se veut modeste mais plein de ressources et d'informations sur les services publics, les commerçants, artisans, professionnels et associations de notre commune.</blockquote>
-          <p>À travers ce site, nous souhaitons, en plus des traditionnelles publications que vous appréciez et que nous continuerons à éditer, mettre en avant le dynamisme des différents acteurs de la vie Gagnièroise ainsi que les atouts naturels, patrimoniaux, le bien et bon vivre de Gagnières.</p>
-          <p>S'inscrire dans les nouveaux supports de communication est nécessaire et doit être considéré comme un moyen supplémentaire de faire connaître notre village et de conforter le lien entre ceux qui habitent à l'année ou pour ceux qui viennent y séjourner.</p>
-          <p>Bonne découverte et n'hésitez pas à nous faire part de vos suggestions.</p>
-          <p>Avec mon attention toujours renouvelée pour tous.</p>
-          <p class="signature">Le Maire,<br>Olivier Martin</p>
+          <p>Chères Gagniéroises, chers Gagniérois,</p>
+          <p><strong>Une nouvelle équipe, un nouveau site internet officiel !</strong></p>
+          <p>C'est avec beaucoup de fierté et de sincérité que je m'adresse à vous à travers ce nouveau site officiel, pour vous partager mes réflexions et mes engagements. Ce mandat est un honneur, mais aussi une responsabilité : défendre les intérêts de notre commune et œuvrer pour le bien de tous ses habitants.</p>
+          <p>Je suis particulièrement heureux de pouvoir m'appuyer sur une équipe municipale à l'image de notre village : composée d'élus expérimentés et de nouveaux visages, issus d'horizons variés, mais tous animés par la même volonté d'agir pour l'intérêt collectif. Cette diversité est une richesse, elle nourrit nos échanges, renforce nos décisions et nous permet d'avancer avec justesse.</p>
+          <p>Depuis notre élection, nous avons engagé un travail de proximité, dans un esprit de dialogue, de transparence et de responsabilité. Nous poursuivons les projets qui améliorent notre cadre de vie, renforcent nos services publics et préservent notre patrimoine.</p>
+          <p>Parmi les priorités à venir, nous mettons l'accent sur :</p>
+          <ul>
+            <li>Offrir aux jeunes de notre commune des opportunités uniques de se développer et de s'impliquer dans des projets stimulants</li>
+            <li>Le maintien et l'amélioration de nos équipements et espaces verts</li>
+            <li>Le développement de la transition écologique</li>
+            <li>Le soutien aux associations et à la vie locale</li>
+          </ul>
+          <p>Je tiens à remercier l'ensemble des acteurs qui contribuent à la vie de notre commune : enseignants, agents municipaux, bénévoles, parents et habitants. Votre engagement est la force qui nous permet de construire un avenir solide et convivial.</p>
+          <p>Avec toute ma considération,</p>
+          <p class="signature">Le Maire,<br>Bernard Durand</p>
         </div>
 
         <hr class="divider">

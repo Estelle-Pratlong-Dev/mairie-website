@@ -764,17 +764,6 @@ a.card:hover .card-link { color: var(--slate-900); }
   color: var(--slate-900);
 }
 
-blockquote.pull {
-  margin: 2rem 0;
-  padding: 1.3rem 1.6rem;
-  border-left: 4px solid var(--blue-500);
-  background: var(--blue-100);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  font-family: var(--font-title);
-  font-size: 1.15rem;
-  color: var(--slate-900);
-}
-
 /* ------------------------------- Formulaire ------------------------------ */
 
 .form-grid { display: grid; gap: 1.1rem; }
