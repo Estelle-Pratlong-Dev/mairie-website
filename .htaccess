@@ -39,6 +39,12 @@ RedirectMatch 403 ^/admin/_
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule ^([a-z0-9-]+\.php)$ pages/$1 [L]
+
+  # Affiche notre page 404 pour les fichiers PHP inexistants
+  # (sans cela, le serveur répond « File not found. » au lieu de la page du site).
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule \.php$ /pages/404.php [L]
 </IfModule>
 
 # Compression des fichiers texte (gain de vitesse)

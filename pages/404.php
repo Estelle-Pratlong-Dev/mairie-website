@@ -4,6 +4,8 @@
  * Affichée automatiquement par le serveur (voir .htaccess) quand une adresse
  * n'existe pas.
  * ========================================================================== */
+// On renvoie bien le code 404 (la page peut aussi être servie par une réécriture).
+http_response_code(404);
 $title       = 'Page introuvable — Mairie de Gagnières';
 $description  = "La page demandée n'existe pas ou a été déplacée.";
 $robots      = 'noindex, nofollow';
