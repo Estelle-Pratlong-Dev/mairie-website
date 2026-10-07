@@ -65,6 +65,15 @@ config.php    Domaine + coordonnées de la mairie (point de réglage unique)
 > La **documentation de maintenance** (comment publier une annonce, ajouter un professionnel,
 > changer les couleurs, mettre le site en ligne…) est détaillée dans **[`GUIDE.md`](GUIDE.md)**.
 
+## Licence
+
+© 2026 Estelle Pratlong — **Tous droits réservés**. Le code source est publié ici pour
+consultation (portfolio) ; toute reproduction, réutilisation, modification ou distribution
+nécessite une autorisation écrite préalable. Voir le fichier [`LICENSE`](LICENSE).
+
+Les **contenus de la commune** (textes officiels, photographies, logo et identité visuelle)
+restent la propriété de la **commune de Gagnières** et ne sont pas couverts par cette licence.
+
 ---
 
 Conception et réalisation : [Estelle Pratlong](https://estelle-pratlong.fr/) pour la commune de Gagnières.
