@@ -235,7 +235,7 @@ function navClass(string $key, string $active, string $base = ''): string {
       </div>
     </div>
     <div class="container footer-bottom">
-      <p style="margin:0">© <span class="js-year">2026</span> Mairie de Gagnières — Tous droits réservés · <a class="footer-credit" href="https://estelle-pratlong.fr/" target="_blank" rel="noopener">Site réalisé par Estelle Pratlong</a></p>
+      <p style="margin:0">© <span class="js-year">2026</span> Mairie de Gagnières — Tous droits réservés · <a class="footer-credit" href="https://dev.estelle-pratlong.fr/" target="_blank" rel="noopener">Site réalisé par Estelle Pratlong</a></p>
       <ul>
         <li><a href="mentions-legales.php">Mentions légales</a></li>
         <li><a href="confidentialite.php">Politique de confidentialité</a></li>

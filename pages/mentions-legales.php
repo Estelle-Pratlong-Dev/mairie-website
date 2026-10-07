@@ -44,7 +44,7 @@ ob_start();
           <p>La commune de Gagnières est attentive à l'accessibilité de son site à tous les publics. Le site a été conçu en visant les critères du Référentiel général d'amélioration de l'accessibilité (RGAA) ; la déclaration d'accessibilité complète sera publiée à l'issue de l'audit de conformité.</p>
 
           <h2>Crédits</h2>
-          <p>Conception et réalisation : <a href="https://estelle-pratlong.fr/" target="_blank" rel="noopener">Estelle Pratlong</a> pour la commune de Gagnières. Cartographie : contributeurs <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>.</p>
+          <p>Conception et réalisation : <a href="https://dev.estelle-pratlong.fr/" target="_blank" rel="noopener">Estelle Pratlong</a> pour la commune de Gagnières. Cartographie : contributeurs <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>.</p>
         </div>
       </div>
     </section>
